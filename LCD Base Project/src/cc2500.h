@@ -130,9 +130,11 @@ CC2500_STROBE_SNOP         =      ((uint8_t)0x3D)
 
 #define CC2500_SETTING_FSCTRL1 						0x0C//0x12 //Frequency offset = 304kHz
 #define CC2500_SETTING_FSCTRL0 						0x00
+
 #define CC2500_SETTING_FREQ2 							0x5D // Carrier Frequency is 2.433GHz
 #define CC2500_SETTING_FREQ1 							0x94
-#define CC2500_SETTING_FREQ0 							0x02
+#define CC2500_SETTING_FREQ0 							0xA7
+ 
 #define CC2500_SETTING_MDMCFG4					 	0x0E //0x2D // BW of channel = 541.666kHz
 #define CC2500_SETTING_MDMCFG3 						0x3B // Baud Rate = 125kb
 #define CC2500_SETTING_MDMCFG2 						0x73 //before demodulator, MSK modulation, 16/16 sync word bits detected
@@ -163,7 +165,7 @@ CC2500_STROBE_SNOP         =      ((uint8_t)0x3D)
 #define CC2500_SETTING_PKTCTRL1						0x08
 #define CC2500_SETTING_PKTCTRL0 						0x04
 #define CC2500_SETTING_ADDR 								0x00 // Global Broadcast Address
-#define CC2500_SETTING_PKTLEN 							0x01 // Packet Length of 3 bytes (0xFF)
+#define CC2500_SETTING_PKTLEN 							0x02 // Packet Length of 3 bytes (0xFF)
 
   /** @defgroup CC2500_Exported_Macros
   * @{

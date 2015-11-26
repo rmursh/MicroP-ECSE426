@@ -19,14 +19,14 @@
 #include <stdio.h>
 #include <string.h>
 
-//#include "LCDInterface.h"
+
 
 #define RX_PKT 0x01
 
 uint8_t read[2];
 uint8_t status;
 
-
+uint8_t temp; 
 
 
 
@@ -71,46 +71,25 @@ void RxPacket(void const *argument){
 	printf("Thread_started. waiting for signal\n");
    // put reciever in RX mode
 	CC2500_Strobe(CC2500_STROBE_SRX, 0x00);
+	
    
 	while(1){
 		int i;
 		//osSignalWait(RX_PKT, osWaitForever);
 		
-      //turn on LED on packet RX
-		//CC2500_Write(&i , CC2500_FIFO_ADDR, 1); 
-		//GPIO_ToggleBits(GPIOD, GPIO_Pin_12 | GPIO_Pin_13 | GPIO_Pin_14 | GPIO_Pin_15);
+
 		status = CC2500_Strobe(CC2500_STROBE_SRX, 0x00);
-		CC2500_Read(read , CC2500_FIFO_ADDR, 1);
+		CC2500_Read(&temp, CC2500_STATUS_REG_RXBYTES , 2);
+		if(temp==2)
+		{
+	  	status = CC2500_Strobe(CC2500_STROBE_SRX, 0x00);
+		  CC2500_RxPackets(read, 2);
+		}
+		osDelay(100);
+		printf("Read is %d %d \n", read[0], read[1]);
 
-    for(i=0 ; i<16800000 ; i++);		
-		//CC2500_RxPackets((uint8_t*)&pkt, CC2500_SETTING_PKTLEN + 2);
-		//printf("buf is %d \n", buf);
+    
 
-//		if(pkt.Src_addr == 0x01){
-//			i++;
-//			 // put the measured RSSI in  byte 3 for main board
-//      pkt.Aux_rssi = pkt.Rssi;
-//      printf("%d Packet received from user beacon\n", i);
-//      printf("SRC: 0x%02x\t\t", pkt.Src_addr);
-//      printf("SEQ: 0x%02x\t\t", pkt.Seq_num);
-//      printf("RAW_RSSI: 0x%02x\n", pkt.Rssi);
-//			
-//			buf = CC2500_Strobe(CC2500_STROBE_SRX, 0x3F);
-//			printf("Buffer : 0x%02x\n", buf); 
-//		}
-//      
-//		
-//      // change the source address on the packet
-//      pkt.Src_addr = CC2500_SETTING_ADDR;
-//      
-//		// transmit this packet for main board
-//      osDelay(100);
-//      CC2500_TxPacket((uint8_t*)&pkt, CC2500_SETTING_PKTLEN);
-//		
-//      // turn off LED on successful Tx
-//      GPIO_ToggleBits(GPIOD, GPIO_Pin_12 | GPIO_Pin_13 | GPIO_Pin_14 | GPIO_Pin_15);
-//      // put device back to rx mode
-//      osDelay(100);
 	}
 }
 
@@ -120,13 +99,8 @@ osThreadDef(RxPacket, osPriorityNormal, 1, 0);
  * main: initialize and start the system
  */
 int main (void) {
-  uint8_t  reg;
-	uint8_t buf1[2] = {5,5};
-	uint8_t buf[3];
+
   osKernelInitialize ();                    // initialize CMSIS-RTOS
-  
-  // initialize peripherals here
- // Blinky_GPIO_Init();
   wireless_init();
   Rx_thread = osThreadCreate(osThread(RxPacket), NULL);
 	osKernelStart();
