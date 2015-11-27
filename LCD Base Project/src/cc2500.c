@@ -2,6 +2,7 @@
 
 #include "cc2500.h"
 #include <stdio.h>
+
 /* Set the Read/Write bit to 1 if we are reading, 0 if we are writing */
 #define READWRITE_BIT 			((uint8_t)0x80)
 /* Set the burst bit to 1 if we are reading/writing multiple bytes
@@ -224,6 +225,51 @@ void CC2500_Write(uint8_t* pBuffer, uint8_t WriteAddr, uint16_t NumByteToWrite) 
 	
 	//Set the Chip Select to high at the end of the transmission (page 23, CC2500)
 	CC2500_CS_HIGH(); 
+}
+
+void CC2500_TXData(angle_data data)
+{
+	uint8_t transmitted_data[2];
+	uint8_t bytes_in_txfifo;
+	transmitted_data[0] = data.pitch;
+	transmitted_data[1] = data.roll;
+	CC2500_Strobe(CC2500_STROBE_SIDLE, 0x00);
+	while(CC2500_Strobe(CC2500_STROBE_SNOP, 0x00) != 0);
+	CC2500_Strobe(CC2500_STROBE_SFTX, 0x00);
+	CC2500_Write(transmitted_data,CC2500_FIFO_ADDR , CC2500_SETTING_PKTLEN);
+	
+	CC2500_Strobe(CC2500_STROBE_STX, 0x00);
+	while(CC2500_Strobe(CC2500_STROBE_SNOP, 0x00) != 2);
+	while(CC2500_Strobe(CC2500_STROBE_SNOP, 0x00) != 0);
+}
+
+angle_data CC2500_RXData(void){
+	uint8_t bytes_in_rxfifo;
+	uint8_t data[2];
+	uint8_t crc;
+	angle_data processed_data;
+	
+	CC2500_Strobe(CC2500_STROBE_SRX, 0x00);
+	//while(CC2500_Strobe(CC2500_STROBE_SNOP, 0x00) != 1);
+	
+	
+		CC2500_Read(data, CC2500_FIFO_ADDR, CC2500_SETTING_PKTLEN);
+		
+			processed_data.pitch = data[0];
+			processed_data.roll = data[1];
+		CC2500_Strobe(CC2500_STROBE_SIDLE, 0x00);
+	
+		//while(CC2500_Strobe(CC2500_STROBE_SNOP, 0x00) != 0);
+	
+		CC2500_Strobe(CC2500_STROBE_SFRX, 0x00); 
+		
+		// Return to RX mode
+		CC2500_Strobe(CC2500_STROBE_SRX, 0x00); 
+		
+		// Wait until mode changes
+		//while(CC2500_Strobe(CC2500_STROBE_SNOP, 0x00) != 1);
+	
+	return processed_data;
 }
 
 

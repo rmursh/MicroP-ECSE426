@@ -1,5 +1,5 @@
 Dependencies for Project 'LCD Base Project', Target 'Target 1': (DO NOT MODIFY !)
-F (.\src\main.c)(0x565793A9)(-c --cpu Cortex-M4.fp -D__RTX -D__MICROLIB -g -O0 --apcs=interwork -I.\inc -I.\src --c99-I "C:\Users\rmursh\Downloads\MicroP-ECSE426\LCD Base Project\RTE"-I "C:\Users\rmursh\Downloads\MicroP-ECSE426\LCD Base Project\RTE\Device\STM32F429ZI"-I C:\Keil_v5\ARM\PACK\ARM\CMSIS\4.3.0\CMSIS\Include-I C:\Keil_v5\ARM\PACK\ARM\CMSIS\4.3.0\CMSIS\RTOS\RTX\INC-I C:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\1.0.8\Device\Include-I C:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\1.0.8\Device\StdPeriph_Driver\inc-D__UVISION_VERSION="515" -D_RTE_ -DSTM32F429_439xx -DHSE_VALUE="8000000" -DUSE_STDPERIPH_DRIVER-o .\obj\main.o --omf_browse .\obj\main.crf --depend .\obj\main.d)
+F (.\src\main.c)(0x5657B2D1)(-c --cpu Cortex-M4.fp -D__RTX -D__MICROLIB -g -O0 --apcs=interwork -I.\inc -I.\src --c99-I "C:\Users\rmursh\Downloads\MicroP-ECSE426\LCD Base Project\RTE"-I "C:\Users\rmursh\Downloads\MicroP-ECSE426\LCD Base Project\RTE\Device\STM32F429ZI"-I C:\Keil_v5\ARM\PACK\ARM\CMSIS\4.3.0\CMSIS\Include-I C:\Keil_v5\ARM\PACK\ARM\CMSIS\4.3.0\CMSIS\RTOS\RTX\INC-I C:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\1.0.8\Device\Include-I C:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\1.0.8\Device\StdPeriph_Driver\inc-D__UVISION_VERSION="515" -D_RTE_ -DSTM32F429_439xx -DHSE_VALUE="8000000" -DUSE_STDPERIPH_DRIVER-o .\obj\main.o --omf_browse .\obj\main.crf --depend .\obj\main.d)
 I (src\osObjects.h)(0x56575064)
 I (C:\Keil_v5\ARM\PACK\ARM\CMSIS\4.3.0\CMSIS\RTOS\RTX\INC\cmsis_os.h)(0x550319DE)
 I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x54C2EE78)
@@ -46,7 +46,8 @@ I (.\inc\stm32f429i_discovery_lcd.h)(0x56575063)
 I (.\inc\stm32f429i_discovery_sdram.h)(0x56575063)
 I (.\inc\fonts.h)(0x56575063)
 I (.\inc\stm32f429i_discovery_l3gd20.h)(0x56575063)
-I (src\cc2500.h)(0x565792C9)
+I (src\cc2500.h)(0x5657B2CF)
+I (src\calculate_angle_tilted.h)(0x5657A622)
 I (C:\Keil_v5\ARM\ARMCC\include\stdio.h)(0x54C2EE78)
 I (C:\Keil_v5\ARM\ARMCC\include\string.h)(0x54C2EE78)
 F (.\src\stm32f429i_discovery_lcd.c)(0x56575064)(-c --cpu Cortex-M4.fp -D__RTX -D__MICROLIB -g -O0 --apcs=interwork -I.\inc -I.\src --c99-I "C:\Users\rmursh\Downloads\MicroP-ECSE426\LCD Base Project\RTE"-I "C:\Users\rmursh\Downloads\MicroP-ECSE426\LCD Base Project\RTE\Device\STM32F429ZI"-I C:\Keil_v5\ARM\PACK\ARM\CMSIS\4.3.0\CMSIS\Include-I C:\Keil_v5\ARM\PACK\ARM\CMSIS\4.3.0\CMSIS\RTOS\RTX\INC-I C:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\1.0.8\Device\Include-I C:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\1.0.8\Device\StdPeriph_Driver\inc-D__UVISION_VERSION="515" -D_RTE_ -DSTM32F429_439xx -DHSE_VALUE="8000000" -DUSE_STDPERIPH_DRIVER-o .\obj\stm32f429i_discovery_lcd.o --omf_browse .\obj\stm32f429i_discovery_lcd.crf --depend .\obj\stm32f429i_discovery_lcd.d)
@@ -173,8 +174,8 @@ I (C:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\1.0.8\Device\StdPeriph_Driver\inc\stm3
 I (C:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\1.0.8\Device\StdPeriph_Driver\inc\stm32f4xx_fmc.h)(0x52B455A6)
 I (C:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\1.0.8\Device\StdPeriph_Driver\inc\stm32f4xx_ltdc.h)(0x52B455A6)
 I (C:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\1.0.8\Device\StdPeriph_Driver\inc\stm32f4xx_sai.h)(0x52B455A6)
-F (.\src\cc2500.c)(0x56575064)(-c --cpu Cortex-M4.fp -D__RTX -D__MICROLIB -g -O0 --apcs=interwork -I.\inc -I.\src --c99-I "C:\Users\rmursh\Downloads\MicroP-ECSE426\LCD Base Project\RTE"-I "C:\Users\rmursh\Downloads\MicroP-ECSE426\LCD Base Project\RTE\Device\STM32F429ZI"-I C:\Keil_v5\ARM\PACK\ARM\CMSIS\4.3.0\CMSIS\Include-I C:\Keil_v5\ARM\PACK\ARM\CMSIS\4.3.0\CMSIS\RTOS\RTX\INC-I C:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\1.0.8\Device\Include-I C:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\1.0.8\Device\StdPeriph_Driver\inc-D__UVISION_VERSION="515" -D_RTE_ -DSTM32F429_439xx -DHSE_VALUE="8000000" -DUSE_STDPERIPH_DRIVER-o .\obj\cc2500.o --omf_browse .\obj\cc2500.crf --depend .\obj\cc2500.d)
-I (src\cc2500.h)(0x565792C9)
+F (.\src\cc2500.c)(0x5657B13A)(-c --cpu Cortex-M4.fp -D__RTX -D__MICROLIB -g -O0 --apcs=interwork -I.\inc -I.\src --c99-I "C:\Users\rmursh\Downloads\MicroP-ECSE426\LCD Base Project\RTE"-I "C:\Users\rmursh\Downloads\MicroP-ECSE426\LCD Base Project\RTE\Device\STM32F429ZI"-I C:\Keil_v5\ARM\PACK\ARM\CMSIS\4.3.0\CMSIS\Include-I C:\Keil_v5\ARM\PACK\ARM\CMSIS\4.3.0\CMSIS\RTOS\RTX\INC-I C:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\1.0.8\Device\Include-I C:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\1.0.8\Device\StdPeriph_Driver\inc-D__UVISION_VERSION="515" -D_RTE_ -DSTM32F429_439xx -DHSE_VALUE="8000000" -DUSE_STDPERIPH_DRIVER-o .\obj\cc2500.o --omf_browse .\obj\cc2500.crf --depend .\obj\cc2500.d)
+I (src\cc2500.h)(0x5657B2CF)
 I (C:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\1.0.8\Device\Include\stm32f4xx.h)(0x529F63E2)
 I (C:\Keil_v5\ARM\PACK\ARM\CMSIS\4.3.0\CMSIS\Include\core_cm4.h)(0x5509D6B4)
 I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x54C2EE78)
@@ -216,8 +217,9 @@ I (C:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\1.0.8\Device\StdPeriph_Driver\inc\stm3
 I (src\osObjects.h)(0x56575064)
 I (C:\Keil_v5\ARM\PACK\ARM\CMSIS\4.3.0\CMSIS\RTOS\RTX\INC\cmsis_os.h)(0x550319DE)
 I (C:\Keil_v5\ARM\ARMCC\include\stddef.h)(0x54C2EE78)
+I (src\calculate_angle_tilted.h)(0x5657A622)
 I (C:\Keil_v5\ARM\ARMCC\include\stdio.h)(0x54C2EE78)
-F (.\src\cc2500.h)(0x565792C9)()
+F (.\src\cc2500.h)(0x5657B2CF)()
 F (.\src\osObjects.h)(0x56575064)()
 F (.\src\LCDInterface.c)(0x56575064)(-c --cpu Cortex-M4.fp -D__RTX -D__MICROLIB -g -O0 --apcs=interwork -I.\inc -I.\src --c99-I "C:\Users\rmursh\Downloads\MicroP-ECSE426\LCD Base Project\RTE"-I "C:\Users\rmursh\Downloads\MicroP-ECSE426\LCD Base Project\RTE\Device\STM32F429ZI"-I C:\Keil_v5\ARM\PACK\ARM\CMSIS\4.3.0\CMSIS\Include-I C:\Keil_v5\ARM\PACK\ARM\CMSIS\4.3.0\CMSIS\RTOS\RTX\INC-I C:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\1.0.8\Device\Include-I C:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\1.0.8\Device\StdPeriph_Driver\inc-D__UVISION_VERSION="515" -D_RTE_ -DSTM32F429_439xx -DHSE_VALUE="8000000" -DUSE_STDPERIPH_DRIVER-o .\obj\lcdinterface.o --omf_browse .\obj\lcdinterface.crf --depend .\obj\lcdinterface.d)
 I (C:\Keil_v5\ARM\ARMCC\include\stdio.h)(0x54C2EE78)
@@ -261,11 +263,18 @@ I (C:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\1.0.8\Device\StdPeriph_Driver\inc\stm3
 I (C:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\1.0.8\Device\StdPeriph_Driver\inc\stm32f4xx_fmc.h)(0x52B455A6)
 I (C:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\1.0.8\Device\StdPeriph_Driver\inc\stm32f4xx_ltdc.h)(0x52B455A6)
 I (C:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\1.0.8\Device\StdPeriph_Driver\inc\stm32f4xx_sai.h)(0x52B455A6)
-I (src\cc2500.h)(0x565792C9)
+I (src\cc2500.h)(0x5657B2CF)
 I (src\osObjects.h)(0x56575064)
 I (C:\Keil_v5\ARM\PACK\ARM\CMSIS\4.3.0\CMSIS\RTOS\RTX\INC\cmsis_os.h)(0x550319DE)
 I (C:\Keil_v5\ARM\ARMCC\include\stddef.h)(0x54C2EE78)
+I (src\calculate_angle_tilted.h)(0x5657A622)
 F (.\src\LCDInterface.h)(0x56575064)()
+F (.\src\calculate_angle_tilted.c)(0x5657A709)(-c --cpu Cortex-M4.fp -D__RTX -D__MICROLIB -g -O0 --apcs=interwork -I.\inc -I.\src --c99-I "C:\Users\rmursh\Downloads\MicroP-ECSE426\LCD Base Project\RTE"-I "C:\Users\rmursh\Downloads\MicroP-ECSE426\LCD Base Project\RTE\Device\STM32F429ZI"-I C:\Keil_v5\ARM\PACK\ARM\CMSIS\4.3.0\CMSIS\Include-I C:\Keil_v5\ARM\PACK\ARM\CMSIS\4.3.0\CMSIS\RTOS\RTX\INC-I C:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\1.0.8\Device\Include-I C:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\1.0.8\Device\StdPeriph_Driver\inc-D__UVISION_VERSION="515" -D_RTE_ -DSTM32F429_439xx -DHSE_VALUE="8000000" -DUSE_STDPERIPH_DRIVER-o .\obj\calculate_angle_tilted.o --omf_browse .\obj\calculate_angle_tilted.crf --depend .\obj\calculate_angle_tilted.d)
+I (C:\Keil_v5\ARM\ARMCC\include\stdio.h)(0x54C2EE78)
+I (C:\Keil_v5\ARM\ARMCC\include\stdlib.h)(0x54C2EE78)
+I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x54C2EE78)
+I (src\calculate_angle_tilted.h)(0x5657A622)
+I (C:\Keil_v5\ARM\ARMCC\include\math.h)(0x54C2EE78)
 F (.\inc\background16bpp.h)(0x56575063)()
 F (.\src\stm32f429i_discovery_l3gd20.c)(0x56575064)(-c --cpu Cortex-M4.fp -D__RTX -D__MICROLIB -g -O0 --apcs=interwork -I.\inc -I.\src --c99-I "C:\Users\rmursh\Downloads\MicroP-ECSE426\LCD Base Project\RTE"-I "C:\Users\rmursh\Downloads\MicroP-ECSE426\LCD Base Project\RTE\Device\STM32F429ZI"-I C:\Keil_v5\ARM\PACK\ARM\CMSIS\4.3.0\CMSIS\Include-I C:\Keil_v5\ARM\PACK\ARM\CMSIS\4.3.0\CMSIS\RTOS\RTX\INC-I C:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\1.0.8\Device\Include-I C:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\1.0.8\Device\StdPeriph_Driver\inc-D__UVISION_VERSION="515" -D_RTE_ -DSTM32F429_439xx -DHSE_VALUE="8000000" -DUSE_STDPERIPH_DRIVER-o .\obj\stm32f429i_discovery_l3gd20.o --omf_browse .\obj\stm32f429i_discovery_l3gd20.crf --depend .\obj\stm32f429i_discovery_l3gd20.d)
 I (.\inc\stm32f429i_discovery_l3gd20.h)(0x56575063)

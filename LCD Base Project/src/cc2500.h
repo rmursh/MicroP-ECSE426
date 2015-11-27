@@ -4,7 +4,7 @@
 #include "stm32f4xx_rcc.h"
 #include "stm32f4xx_spi.h"
 #include "osObjects.h" 
-
+#include "calculate_angle_tilted.h"
 
 
 #define CC2500_SPI                        SPI4
@@ -184,3 +184,5 @@ void CC2500_RxPackets(uint8_t* pBuffer, uint16_t NumByteToRead);
 uint8_t CC2500_Strobe(StrobeCommand StrobeCmd, uint8_t RX_FIFO);
 uint8_t CC2500_StatusReg(uint8_t StatusRegAddr);
 float CC2500_ComputeRssi(float rssi_dec);
+void CC2500_TXData(angle_data data);
+angle_data CC2500_RXData(void);
