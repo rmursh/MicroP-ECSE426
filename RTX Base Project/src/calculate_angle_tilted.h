@@ -8,7 +8,10 @@
 	
 #define PI 3.14159265
 
-
+typedef struct{
+	float pitch;
+	float roll;
+}angle_data;
 
 /*
  * Function: calculate_pitch

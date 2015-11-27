@@ -4,7 +4,7 @@
 #include "stm32f4xx_rcc.h"
 #include "stm32f4xx_spi.h"
 #include "osObjects.h" 
-
+#include "calculate_angle_tilted.h"
 
 
 #define CC2500_SPI                        SPI2
@@ -140,7 +140,7 @@ CC2500_STROBE_SNOP         =      ((uint8_t)0x3D)
 #define CC2500_SETTING_MDMCFG2 						0x73 //before demodulator, MSK modulation, 16/16 sync word bits detected
 #define CC2500_SETTING_MDMCFG1 						0x42 //
 #define CC2500_SETTING_MDMCFG0 						0xF8 // Default Channel Spacing of 200kHz
-#define CC2500_SETTING_CHANNR 						0x00 // Channel 0
+#define CC2500_SETTING_CHANNR 							0x00 // Channel 0
 #define CC2500_SETTING_DEVIATN 						0x00 //0x01 // 1785kHz
 #define CC2500_SETTING_FREND1 							0xB6
 #define CC2500_SETTING_FREND0 							0x10
@@ -184,3 +184,5 @@ void CC2500_RxPackets(uint8_t* pBuffer, uint16_t NumByteToRead);
 uint8_t CC2500_Strobe(StrobeCommand StrobeCmd, uint8_t RX_FIFO);
 uint8_t CC2500_StatusReg(uint8_t StatusRegAddr);
 float CC2500_ComputeRssi(float rssi_dec);
+void CC2500_TXData(angle_data data);
+angle_data CC2500_RXData(void);

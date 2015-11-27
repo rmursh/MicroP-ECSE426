@@ -28,28 +28,24 @@ Project File Date:  11/25/2015
 *** Using Compiler 'V5.05 update 2 (build 169)', folder: 'C:\Keil_v5\ARM\ARMCC\Bin'
 Build target 'Target 1'
 compiling main.c...
-src\cc2500.h(186): warning:  #1-D: last line of file ends without a newline
-  float CC2500_ComputeRssi(float rssi_dec);
-src\main.c(52): warning:  #177-D: variable "i" was declared but never referenced
+src\calculate_angle_tilted.h(37): warning:  #1-D: last line of file ends without a newline
+  float calculate_roll(float* calibrated_data);
+src\cc2500.h(188): warning:  #1-D: last line of file ends without a newline
+  angle_data CC2500_RXData(void);
+src\main.c(57): warning:  #177-D: variable "i" was declared but never referenced
                 int i;
-src\main.c(40): warning:  #550-D: variable "mode_filter" was set but never used
+src\main.c(43): warning:  #550-D: variable "mode_filter" was set but never used
         uint8_t mode_filter, transmit_mode;
-src\main.c(40): warning:  #550-D: variable "transmit_mode" was set but never used
+src\main.c(43): warning:  #550-D: variable "transmit_mode" was set but never used
         uint8_t mode_filter, transmit_mode;
-src\main.c(43): warning:  #177-D: variable "pkt" was declared but never referenced
+src\main.c(46): warning:  #177-D: variable "pkt" was declared but never referenced
         Packet pkt;
-src\main.c(154): warning:  #1-D: last line of file ends without a newline
+src\main.c(162): warning:  #1-D: last line of file ends without a newline
   }
-src\main.c: 6 warnings, 0 errors
-compiling cc2500.c...
-src\cc2500.h(186): warning:  #1-D: last line of file ends without a newline
-  float CC2500_ComputeRssi(float rssi_dec);
-src\cc2500.c(418): warning:  #1-D: last line of file ends without a newline
-  }
-src\cc2500.c: 2 warnings, 0 errors
+src\main.c: 7 warnings, 0 errors
 linking...
-Program Size: Code=33008 RO-data=824 RW-data=368 ZI-data=10472  
-".\obj\RTX Base Project.axf" - 0 Error(s), 8 Warning(s).
+Program Size: Code=33312 RO-data=824 RW-data=380 ZI-data=10476  
+".\obj\RTX Base Project.axf" - 0 Error(s), 7 Warning(s).
 
 <h2>Software Packages used:</h2>
 
