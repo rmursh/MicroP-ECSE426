@@ -5,8 +5,11 @@
 #include <stdio.h>
 #include "cc2500.h"
 
+
 #define RX_PKT 0x01
 
+angle_data angles;
+uint8_t buf[2] = {0,255};
 
 void wireless_init(void);
 
@@ -46,16 +49,21 @@ void TxPacket(void const *argument){
    transmit_mode = 0x20;
 	printf("Thread_started. waitig for signal\n");
    // put reciever in RX mode
-	uint8_t buf[2] = {0,255};
+	angles.pitch =255;
+	angles.roll = 0;
   
+	
 	while(1){
 		int i;
 		//osSignalWait(RX_PKT, osWaitForever);
-		buf[0]++;
-		buf[1]--;
+		angles.roll++;
+		angles.pitch--;
       //turn on LED on packet RX
-		GPIO_ToggleBits(GPIOD, GPIO_Pin_12 | GPIO_Pin_13 | GPIO_Pin_14 | GPIO_Pin_15);
+		 buf[0] = angles.roll ;
+	   buf[1] = angles.pitch ;
+		//GPIO_ToggleBits(GPIOD, GPIO_Pin_12 | GPIO_Pin_13 | GPIO_Pin_14 | GPIO_Pin_15);
     CC2500_TxPacket(buf, 2);
+		//CC2500_TXData(angles);
 		osDelay(1000);
 		//CC2500_RxPackets((uint8_t*)&pkt, CC2500_SETTING_PKTLEN + 2);
 		printf("buf is %d, %d \n", buf[0], buf[1]);
