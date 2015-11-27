@@ -42,3 +42,4 @@
 .\obj\main.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
 .\obj\main.o: src\cc2500.h
 .\obj\main.o: src\calculate_angle_tilted.h
+.\obj\main.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\math.h
