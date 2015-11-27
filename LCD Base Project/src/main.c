@@ -24,6 +24,7 @@
 #define RX_PKT 0x01
 
 uint8_t read[2];
+uint8_t plot[2];
 uint8_t status;
 
 uint8_t temp; 
@@ -60,6 +61,90 @@ void Blinky_GPIO_Init(void){
 	
 }
 
+void setGrid(){
+     LCD_SetFont(&Font8x8);
+	  //The number of string lines avaialble is dependant on the font height:
+	  //A font height of 8 will result in 320 / 8 = 40 lines
+		
+    //LCD_DisplayStringLine(0, 4,  (uint8_t*)&read[0]);
+	  
+	  //The stm32f429i_discovery_lcd.h file offers functions which allows to draw various shapes
+	  //in either border or filled with colour. You can draw circles, rectangles, triangles, lines,
+	  //ellipses, and polygons. You can draw strings or characters, change background/foreground 
+	  //colours.
+	  LCD_SetTextColor(LCD_COLOR_BLACK);
+		int i, j;
+    for(i =20; i <= 300; i +=10)
+    {		
+	   LCD_DrawLine(20, i, 200, LCD_DIR_HORIZONTAL);
+		}
+		for(j = 20; j <= 220; j +=10)
+    {		
+	   LCD_DrawLine(j, 20, 280, LCD_DIR_VERTICAL);
+		}
+		LCD_DisplayStringLine(310, (uint8_t*)"         Y DISPLACEMENT     ");
+		LCD_DisplayChar(90, 10, (uint8_t)'X');
+    LCD_DisplayChar(110, 10, (uint8_t)'D');
+		LCD_DisplayChar(120, 10, (uint8_t)'I');
+		LCD_DisplayChar(130, 10, (uint8_t)'S');
+		LCD_DisplayChar(140, 10, (uint8_t)'P');
+		LCD_DisplayChar(150, 10, (uint8_t)'L');
+		LCD_DisplayChar(160, 10, (uint8_t)'A');
+		LCD_DisplayChar(170, 10, (uint8_t)'C');
+		LCD_DisplayChar(180, 10, (uint8_t)'E');
+		LCD_DisplayChar(190, 10, (uint8_t)'M');
+		LCD_DisplayChar(200, 10, (uint8_t)'E');
+		LCD_DisplayChar(210, 10, (uint8_t)'N');
+		LCD_DisplayChar(220, 10, (uint8_t)'T');
+		LCD_SetFont(&Font12x12);
+		LCD_SetTextColor(LCD_COLOR_RED);
+}
+
+void DisplayLCD(void const *argument){
+	char* s;
+	int cnt = 0;
+	   LCD_Clear(LCD_COLOR_WHITE);
+	  //sprintf( s , "%d", read[0] ); 
+	  //The files source and header files implement drawing characters (drawing strings)
+	  //using different font sizes, see the file font.h for the four sizes
+     setGrid();
+	while(1){
+		/* Clear the LCD */  		
+		//LCD_DrawCircle((uint16_t)(20+read[0]*0.862745), (uint16_t)(20+read[1]*1.176), 4 );
+		if(cnt > 1)
+		{
+			LCD_DrawUniLine((uint16_t)(120+read[0]*0.862745), (uint16_t)(160+read[1]*1.176), plot[0], plot[1]);
+		}
+		plot[0] = (uint16_t)(120+read[0]*0.862745);
+		plot[1] = (uint16_t)(160+read[1]*1.176);
+		cnt++;
+
+		
+//	  LCD_SetTextColor(LCD_COLOR_BLUE2); 
+//	  LCD_DrawFullCircle(120, 160, 100);
+//	  LCD_SetTextColor(LCD_COLOR_CYAN); 
+//	  LCD_DrawFullCircle(120, 160, 90);
+//	  LCD_SetTextColor(LCD_COLOR_YELLOW); 
+//	  LCD_DrawFullCircle(120, 160, 80);
+//	  LCD_SetTextColor(LCD_COLOR_RED); 
+//	  LCD_DrawFullCircle(120, 160, 70);
+//	  LCD_SetTextColor(LCD_COLOR_BLUE); 
+//	  LCD_DrawFullCircle(120, 160, 60);
+//	  LCD_SetTextColor(LCD_COLOR_GREEN); 
+//	  LCD_DrawFullCircle(120, 160, 50);
+//	  LCD_SetTextColor(LCD_COLOR_BLACK); 
+//	  LCD_DrawFullCircle(120, 160, 40);
+//		LCD_SetTextColor(LCD_COLOR_WHITE);
+//		LCD_DrawRect(90,130,60,60);
+//		LCD_SetTextColor(LCD_COLOR_MAGENTA);
+//		LCD_FillTriangle(90, 120, 150, 130, 180, 130);
+//		LCD_SetFont(&Font12x12);
+//		LCD_DisplayStringLine(LINE(15), (uint8_t*)"      Success!    ");
+		
+		osDelay(200);
+	}
+}
+
 void RxPacket(void const *argument){
 	uint8_t mode_filter, transmit_mode;
    //uint8_t buf;
@@ -76,25 +161,22 @@ void RxPacket(void const *argument){
 	while(1){
 		int i;
 		//osSignalWait(RX_PKT, osWaitForever);
-		
-
 		status = CC2500_Strobe(CC2500_STROBE_SRX, 0x00);
 		CC2500_Read(&temp, CC2500_STATUS_REG_RXBYTES , 2);
-		if(temp==2)
+		if(temp == 2)
 		{
 	  	status = CC2500_Strobe(CC2500_STROBE_SRX, 0x00);
 		  CC2500_RxPackets(read, 2);
 		}
 		osDelay(100);
 		printf("Read is %d %d \n", read[0], read[1]);
-
-    
-
 	}
 }
 
 osThreadDef(RxPacket, osPriorityNormal, 1, 0);
+osThreadDef(DisplayLCD, osPriorityNormal, 1, 0);
 
+osThreadId DisplayLCD_thread;
 /*
  * main: initialize and start the system
  */
@@ -102,6 +184,20 @@ int main (void) {
 
   osKernelInitialize ();                    // initialize CMSIS-RTOS
   wireless_init();
+	
+	  // initialize peripherals here
+	/* LCD initiatization */
+  LCD_Init();
+  
+  /* LCD Layer initiatization */
+  LCD_LayerInit();
+    
+  /* Enable the LTDC controler */
+  LTDC_Cmd(ENABLE);
+  
+  /* Set LCD foreground layer as the current layer */
+  LCD_SetLayer(LCD_FOREGROUND_LAYER);
+	DisplayLCD_thread = osThreadCreate(osThread(DisplayLCD), NULL);
   Rx_thread = osThreadCreate(osThread(RxPacket), NULL);
 	osKernelStart();
 }
