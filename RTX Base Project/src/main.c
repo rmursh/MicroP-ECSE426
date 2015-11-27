@@ -7,7 +7,6 @@
 
 #define RX_PKT 0x01
 
-uint8_t buf;
 
 void wireless_init(void);
 
@@ -37,7 +36,7 @@ void Blinky_GPIO_Init(void){
 	
 }
 
-void RxPacket(void const *argument){
+void TxPacket(void const *argument){
 	uint8_t mode_filter, transmit_mode;
    //uint8_t buf;
 	
@@ -47,49 +46,50 @@ void RxPacket(void const *argument){
    transmit_mode = 0x20;
 	printf("Thread_started. waitig for signal\n");
    // put reciever in RX mode
-	CC2500_Strobe(CC2500_STROBE_SRX, 0x00);
-   
+	uint8_t buf[2] = {0,255};
+  
 	while(1){
 		int i;
-		osSignalWait(RX_PKT, osWaitForever);
-		
+		//osSignalWait(RX_PKT, osWaitForever);
+		buf[0]++;
+		buf[1]--;
       //turn on LED on packet RX
 		GPIO_ToggleBits(GPIOD, GPIO_Pin_12 | GPIO_Pin_13 | GPIO_Pin_14 | GPIO_Pin_15);
-		CC2500_Read(&buf ,CC2500_FIFO_ADDR, 1); 
-		osDelay(20);
+    CC2500_TxPacket(buf, 2);
+		osDelay(1000);
 		//CC2500_RxPackets((uint8_t*)&pkt, CC2500_SETTING_PKTLEN + 2);
-		printf("buf is %d \n", buf);
+		printf("buf is %d, %d \n", buf[0], buf[1]);
 
-		if(pkt.Src_addr == 0x01){
-			i++;
-			 // put the measured RSSI in  byte 3 for main board
-      pkt.Aux_rssi = pkt.Rssi;
-      printf("%d Packet received from user beacon\n", i);
-      printf("SRC: 0x%02x\t\t", pkt.Src_addr);
-      printf("SEQ: 0x%02x\t\t", pkt.Seq_num);
-      printf("RAW_RSSI: 0x%02x\n", pkt.Rssi);
-			
-			buf = CC2500_Strobe(CC2500_STROBE_SRX, 0x3F);
-			printf("Buffer : 0x%02x\n", buf); 
-		}
-      
-		
-      // change the source address on the packet
-      pkt.Src_addr = CC2500_SETTING_ADDR;
-      
-		// transmit this packet for main board
-      osDelay(100);
-      CC2500_TxPacket((uint8_t*)&pkt, CC2500_SETTING_PKTLEN);
-		
-      // turn off LED on successful Tx
-      GPIO_ToggleBits(GPIOD, GPIO_Pin_12 | GPIO_Pin_13 | GPIO_Pin_14 | GPIO_Pin_15);
-      // put device back to rx mode
-      osDelay(100);
+//		if(pkt.Src_addr == 0x01){
+//			i++;
+//			 // put the measured RSSI in  byte 3 for main board
+//      pkt.Aux_rssi = pkt.Rssi;
+//      printf("%d Packet received from user beacon\n", i);
+//      printf("SRC: 0x%02x\t\t", pkt.Src_addr);
+//      printf("SEQ: 0x%02x\t\t", pkt.Seq_num);
+//      printf("RAW_RSSI: 0x%02x\n", pkt.Rssi);
+//			
+//			buf = CC2500_Strobe(CC2500_STROBE_SRX, 0x3F);
+//			printf("Buffer : 0x%02x\n", buf); 
+//		}
+//      
+//		
+//      // change the source address on the packet
+//      pkt.Src_addr = CC2500_SETTING_ADDR;
+//      
+//		// transmit this packet for main board
+//      osDelay(100);
+//      CC2500_TxPacket((uint8_t*)&pkt, CC2500_SETTING_PKTLEN);
+//		
+//      // turn off LED on successful Tx
+//      GPIO_ToggleBits(GPIOD, GPIO_Pin_12 | GPIO_Pin_13 | GPIO_Pin_14 | GPIO_Pin_15);
+//      // put device back to rx mode
+//      osDelay(100);
 	}
 }
 
 
-osThreadDef(RxPacket, osPriorityNormal, 1, 0);
+osThreadDef(TxPacket, osPriorityNormal, 1, 0);
 
 /*
  * main: initialize and start the system
@@ -102,7 +102,7 @@ int main (void) {
   Blinky_GPIO_Init();
   wireless_init();
 
-  Rx_thread = osThreadCreate(osThread(RxPacket), NULL);
+  Rx_thread = osThreadCreate(osThread(TxPacket), NULL);
 	osKernelStart();
 }
 

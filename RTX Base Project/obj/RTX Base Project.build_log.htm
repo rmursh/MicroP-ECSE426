@@ -21,25 +21,35 @@ Target DLL:      STLink\ST-LINKIII-KEIL_SWO.dll V2.0.15.0_KEIL
 Dialog DLL:      TCM.DLL V1.14.5.0
  
 <h2>Project:</h2>
-C:\Users\rmursh\Downloads\RTX Base Project\RTX Base Project.uvprojx
-Project File Date:  11/05/2015
+C:\Users\rmursh\Downloads\MicroP-ECSE426\RTX Base Project\RTX Base Project.uvprojx
+Project File Date:  11/25/2015
 
 <h2>Output:</h2>
 *** Using Compiler 'V5.05 update 2 (build 169)', folder: 'C:\Keil_v5\ARM\ARMCC\Bin'
 Build target 'Target 1'
 compiling main.c...
-src\cc2500.h(184): warning:  #1-D: last line of file ends without a newline
+src\cc2500.h(186): warning:  #1-D: last line of file ends without a newline
   float CC2500_ComputeRssi(float rssi_dec);
-src\main.c(41): warning:  #550-D: variable "mode_filter" was set but never used
+src\main.c(52): warning:  #177-D: variable "i" was declared but never referenced
+                int i;
+src\main.c(40): warning:  #550-D: variable "mode_filter" was set but never used
         uint8_t mode_filter, transmit_mode;
-src\main.c(41): warning:  #550-D: variable "transmit_mode" was set but never used
+src\main.c(40): warning:  #550-D: variable "transmit_mode" was set but never used
         uint8_t mode_filter, transmit_mode;
+src\main.c(43): warning:  #177-D: variable "pkt" was declared but never referenced
+        Packet pkt;
 src\main.c(154): warning:  #1-D: last line of file ends without a newline
   }
-src\main.c: 4 warnings, 0 errors
+src\main.c: 6 warnings, 0 errors
+compiling cc2500.c...
+src\cc2500.h(186): warning:  #1-D: last line of file ends without a newline
+  float CC2500_ComputeRssi(float rssi_dec);
+src\cc2500.c(418): warning:  #1-D: last line of file ends without a newline
+  }
+src\cc2500.c: 2 warnings, 0 errors
 linking...
-Program Size: Code=33224 RO-data=824 RW-data=372 ZI-data=10476  
-".\obj\RTX Base Project.axf" - 0 Error(s), 4 Warning(s).
+Program Size: Code=33008 RO-data=824 RW-data=368 ZI-data=10472  
+".\obj\RTX Base Project.axf" - 0 Error(s), 8 Warning(s).
 
 <h2>Software Packages used:</h2>
 
@@ -85,8 +95,8 @@ Package Vendor: Keil
    * Component: WWDG Version: 1.3.0
 
 <h2>Collection of Component include folders:</h2>
-  C:\Users\rmursh\Downloads\RTX Base Project\RTE
-  C:\Users\rmursh\Downloads\RTX Base Project\RTE\Device\STM32F407VG
+  C:\Users\rmursh\Downloads\MicroP-ECSE426\RTX Base Project\RTE
+  C:\Users\rmursh\Downloads\MicroP-ECSE426\RTX Base Project\RTE\Device\STM32F407VG
   C:\Keil_v5\ARM\PACK\ARM\CMSIS\4.4.0\CMSIS\Include
   C:\Keil_v5\ARM\PACK\ARM\CMSIS\4.4.0\CMSIS\RTOS\RTX\INC
   C:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\1.0.8\Device\Include

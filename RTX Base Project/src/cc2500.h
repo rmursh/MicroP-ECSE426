@@ -140,7 +140,7 @@ CC2500_STROBE_SNOP         =      ((uint8_t)0x3D)
 #define CC2500_SETTING_MDMCFG2 						0x73 //before demodulator, MSK modulation, 16/16 sync word bits detected
 #define CC2500_SETTING_MDMCFG1 						0x42 //
 #define CC2500_SETTING_MDMCFG0 						0xF8 // Default Channel Spacing of 200kHz
-#define CC2500_SETTING_CHANNR 							0x00 // Channel 0
+#define CC2500_SETTING_CHANNR 						0x00 // Channel 0
 #define CC2500_SETTING_DEVIATN 						0x00 //0x01 // 1785kHz
 #define CC2500_SETTING_FREND1 							0xB6
 #define CC2500_SETTING_FREND0 							0x10
@@ -165,7 +165,7 @@ CC2500_STROBE_SNOP         =      ((uint8_t)0x3D)
 #define CC2500_SETTING_PKTCTRL1						0x08
 #define CC2500_SETTING_PKTCTRL0 						0x04
 #define CC2500_SETTING_ADDR 								0x00 // Global Broadcast Address
-#define CC2500_SETTING_PKTLEN 							0x01 // Packet Length of 3 bytes (0xFF)
+#define CC2500_SETTING_PKTLEN 							0x02 // Packet Length of 3 bytes (0xFF)
 
   /** @defgroup CC2500_Exported_Macros
   * @{
