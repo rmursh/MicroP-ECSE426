@@ -4,12 +4,13 @@
 #include "stm32f4xx_conf.h"
 #include <stdio.h>
 #include "cc2500.h"
+#include "math.h"
 
 
 #define RX_PKT 0x01
 
 angle_data angles;
-uint8_t buf[2] = {0,255};
+uint8_t buf[2] = {0,0};
 
 void wireless_init(void);
 
@@ -39,6 +40,8 @@ void Blinky_GPIO_Init(void){
 	
 }
 
+
+
 void TxPacket(void const *argument){
 	uint8_t mode_filter, transmit_mode;
    //uint8_t buf;
@@ -49,7 +52,7 @@ void TxPacket(void const *argument){
    transmit_mode = 0x20;
 	printf("Thread_started. waitig for signal\n");
    // put reciever in RX mode
-	angles.pitch =255;
+	angles.pitch =0;
 	angles.roll = 0;
   
 	
@@ -57,12 +60,12 @@ void TxPacket(void const *argument){
 		int i;
 		//osSignalWait(RX_PKT, osWaitForever);
 		angles.roll++;
-		angles.pitch--;
+		angles.pitch = (uint8_t)20*sin(angles.roll/PI)+20;
       //turn on LED on packet RX
 		 buf[0] = angles.roll ;
 	   buf[1] = angles.pitch ;
 		//GPIO_ToggleBits(GPIOD, GPIO_Pin_12 | GPIO_Pin_13 | GPIO_Pin_14 | GPIO_Pin_15);
-    CC2500_TxPacket(buf, 2);
+    CC2500_TxPacket(buf, CC2500_SETTING_PKTLEN);
 		//CC2500_TXData(angles);
 		osDelay(1000);
 		//CC2500_RxPackets((uint8_t*)&pkt, CC2500_SETTING_PKTLEN + 2);
