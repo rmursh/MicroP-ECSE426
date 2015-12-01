@@ -457,6 +457,11 @@
               <FileType>5</FileType>
               <FilePath>.\src\LCDInterface.h</FilePath>
             </File>
+            <File>
+              <FileName>calculate_angle_tilted.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\src\calculate_angle_tilted.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>

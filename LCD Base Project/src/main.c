@@ -23,11 +23,12 @@
 
 #define RX_PKT 0x01
 
-uint8_t read[2];
+uint8_t read[10];
+uint8_t read2[5][5];
 uint8_t plot[2];
 uint8_t status;
 
-uint8_t temp; 
+uint8_t temp, test; 
 
 
 
@@ -163,10 +164,12 @@ void RxPacket(void const *argument){
 		//osSignalWait(RX_PKT, osWaitForever);
 		status = CC2500_Strobe(CC2500_STROBE_SRX, 0x00);
 		CC2500_Read(&temp, CC2500_STATUS_REG_RXBYTES , 2);
-		if(temp == 2)
+		CC2500_Read(&test, CC2500_STATUS_REG_PKTSTATUS , 2);
+		//CC2500_RxPackets(read, 2);
+		if(temp == CC2500_SETTING_PKTLEN)
 		{
 	  	status = CC2500_Strobe(CC2500_STROBE_SRX, 0x00);
-		  CC2500_RxPackets(read, 2);
+		  CC2500_RxPackets((uint8_t*)read2, CC2500_SETTING_PKTLEN );
 		}
 		osDelay(100);
 		printf("Read is %d %d \n", read[0], read[1]);
@@ -235,8 +238,6 @@ void wireless_init() {
 	NVIC_Init(&NVIC_init_st);
 	
 	NVIC_EnableIRQ(CC2500_SPI_INT_EXTI_IRQn);
-	
-	
 	
 	EXTI_GenerateSWInterrupt(EXTI_Line4);
 	CC2500_Init();

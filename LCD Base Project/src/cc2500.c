@@ -27,7 +27,8 @@ void CC2500_Init(void) {
    
    CC2500_LowLevel_Init();
    
-	for(int i=0; i<50000;i++);
+	osDelay(50);
+	//for(int i=0; i<50000;i++);
 	 // Wireless configuration as defined on project specification page 9
    uint8_t reg;
    
