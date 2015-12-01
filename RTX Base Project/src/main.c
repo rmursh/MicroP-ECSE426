@@ -6,9 +6,18 @@
 #include "cc2500.h"
 #include "math.h"
 
-
+uint8_t abc[5][5] ={
+	          {16,17,18,19,3},
+            {0,1,2,3,4},
+            {4,5,6,7,8},
+            {12,13,14,15,7},
+						{8,9,10,11,6}
+            };
+uint8_t test[10] = {16,17,18,19,3,4,7,7,9,4};
+uint8_t test2[10] =  {8,9,10,11,6,6,7,12,4,56};
 #define RX_PKT 0x01
 
+uint8_t var;
 angle_data angles;
 uint8_t buf[2] = {0,0};
 
@@ -40,7 +49,42 @@ void Blinky_GPIO_Init(void){
 	
 }
 
+void EXTI_NVIC_Config_PushButton(void)
+{
+	GPIO_InitTypeDef GPIO_MEM_Init_struct;
+	EXTI_InitTypeDef EXTI_MEM_struct;
+	NVIC_InitTypeDef NVIC_MEM_struct;
+	
+	RCC_AHB1PeriphClockCmd(RCC_AHB1Periph_GPIOA, ENABLE);
+	// Enable SYSCFG clock 
+  RCC_APB2PeriphClockCmd(RCC_APB2Periph_SYSCFG, ENABLE);
+	
+	GPIO_StructInit(&GPIO_MEM_Init_struct);
+	
+	GPIO_MEM_Init_struct.GPIO_Mode = GPIO_Mode_IN;
+	GPIO_MEM_Init_struct.GPIO_Pin = GPIO_Pin_0;
+	GPIO_MEM_Init_struct.GPIO_PuPd = GPIO_PuPd_NOPULL;
+  
+	GPIO_Init(GPIOA, &GPIO_MEM_Init_struct);
+	
+	SYSCFG_EXTILineConfig(EXTI_PortSourceGPIOA, EXTI_PinSource0);
+	
+	EXTI_MEM_struct.EXTI_Line = EXTI_Line0;
+  EXTI_MEM_struct.EXTI_Mode = EXTI_Mode_Interrupt;
+  EXTI_MEM_struct.EXTI_Trigger = EXTI_Trigger_Rising;  
+  EXTI_MEM_struct.EXTI_LineCmd = ENABLE;
+  EXTI_Init(&EXTI_MEM_struct);
 
+  /* Enable and set EXTI Line0 Interrupt */ 
+  NVIC_MEM_struct.NVIC_IRQChannel = EXTI0_IRQn;
+  NVIC_MEM_struct.NVIC_IRQChannelPreemptionPriority = 0x01;
+  NVIC_MEM_struct.NVIC_IRQChannelSubPriority = 0x03; // set priority to 2, accelerometer data ready interrupts gets priority of 1
+  NVIC_MEM_struct.NVIC_IRQChannelCmd = ENABLE;
+  NVIC_Init(&NVIC_MEM_struct);
+	
+	return;
+
+}
 
 void TxPacket(void const *argument){
 	uint8_t mode_filter, transmit_mode;
@@ -50,12 +94,12 @@ void TxPacket(void const *argument){
    GPIO_ResetBits(GPIOD, GPIO_Pin_12 | GPIO_Pin_13 | GPIO_Pin_14 | GPIO_Pin_15);
    mode_filter = 0x70;
    transmit_mode = 0x20;
-	printf("Thread_started. waitig for signal\n");
+	printf("Thread_started. waiting for signal\n");
    // put reciever in RX mode
 	angles.pitch =0;
 	angles.roll = 0;
   
-	
+	osSignalWait(RX_PKT, osWaitForever);
 	while(1){
 		int i;
 		//osSignalWait(RX_PKT, osWaitForever);
@@ -65,37 +109,14 @@ void TxPacket(void const *argument){
 		 buf[0] = angles.roll ;
 	   buf[1] = angles.pitch ;
 		//GPIO_ToggleBits(GPIOD, GPIO_Pin_12 | GPIO_Pin_13 | GPIO_Pin_14 | GPIO_Pin_15);
-    CC2500_TxPacket(buf, CC2500_SETTING_PKTLEN);
-		//CC2500_TXData(angles);
+    CC2500_TxPacket((uint8_t*)abc, CC2500_SETTING_PKTLEN);
+		CC2500_Read(&var, CC2500_STATUS_REG_TXBYTES, 2 );
+    //CC2500_Strobe(CC2500_STROBE_SRX, 0x00);
 		osDelay(1000);
-		//CC2500_RxPackets((uint8_t*)&pkt, CC2500_SETTING_PKTLEN + 2);
-		printf("buf is %d, %d \n", buf[0], buf[1]);
+	  //CC2500_TxPacket(test2, CC2500_SETTING_PKTLEN);
+		printf("TxBytes is %d , %d\n", var, sizeof(abc));
+		osSignalClear(Rx_thread, RX_PKT);
 
-//		if(pkt.Src_addr == 0x01){
-//			i++;
-//			 // put the measured RSSI in  byte 3 for main board
-//      pkt.Aux_rssi = pkt.Rssi;
-//      printf("%d Packet received from user beacon\n", i);
-//      printf("SRC: 0x%02x\t\t", pkt.Src_addr);
-//      printf("SEQ: 0x%02x\t\t", pkt.Seq_num);
-//      printf("RAW_RSSI: 0x%02x\n", pkt.Rssi);
-//			
-//			buf = CC2500_Strobe(CC2500_STROBE_SRX, 0x3F);
-//			printf("Buffer : 0x%02x\n", buf); 
-//		}
-//      
-//		
-//      // change the source address on the packet
-//      pkt.Src_addr = CC2500_SETTING_ADDR;
-//      
-//		// transmit this packet for main board
-//      osDelay(100);
-//      CC2500_TxPacket((uint8_t*)&pkt, CC2500_SETTING_PKTLEN);
-//		
-//      // turn off LED on successful Tx
-//      GPIO_ToggleBits(GPIOD, GPIO_Pin_12 | GPIO_Pin_13 | GPIO_Pin_14 | GPIO_Pin_15);
-//      // put device back to rx mode
-//      osDelay(100);
 	}
 }
 
@@ -108,7 +129,7 @@ osThreadDef(TxPacket, osPriorityNormal, 1, 0);
 int main (void) {
   //uint8_t buf, reg;
   osKernelInitialize ();                    // initialize CMSIS-RTOS
-  
+  EXTI_NVIC_Config_PushButton();
   // initialize peripherals here
   Blinky_GPIO_Init();
   wireless_init();
@@ -152,14 +173,23 @@ void wireless_init() {
 	NVIC_EnableIRQ(CC2500_SPI_INT_EXTI_IRQn);
 }
 
+void EXTI0_IRQHandler(void)
+{
+  if(EXTI_GetITStatus(EXTI_Line0) != RESET)
+  {
+		osSignalSet(Rx_thread, RX_PKT); 
+  }
+	EXTI_ClearITPendingBit(EXTI_Line0);
+}
+
 /**
   * @brief  Interrupt Service Routine for EXTI12_IRQHandler
   */
-void EXTI15_10_IRQHandler(void) {
-	if(EXTI_GetITStatus(EXTI_Line12) != RESET)
-    {
-			osSignalSet(Rx_thread, RX_PKT);
-		}	
-	// clear EXTI inruppt pending bit.
-	EXTI_ClearITPendingBit(EXTI_Line12);
-}
+//void EXTI15_10_IRQHandler(void) {
+//	if(EXTI_GetITStatus(EXTI_Line12) != RESET)
+//    {
+//			osSignalSet(Rx_thread, RX_PKT);
+//		}	
+//	// clear EXTI inruppt pending bit.
+//	EXTI_ClearITPendingBit(EXTI_Line12);
+//}
