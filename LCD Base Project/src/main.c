@@ -23,6 +23,7 @@
 
 #define RX_PKT 0x01
 
+float received[2] = {0, 0} ;
 float read[30];
 float a;
 uint8_t read2[5][5];
@@ -110,17 +111,17 @@ void DisplayLCD(void const *argument){
 	  //The files source and header files implement drawing characters (drawing strings)
 	  //using different font sizes, see the file font.h for the four sizes
      setGrid();
-	while(i < 30){
+	while(1){
 		/* Clear the LCD */  		
 		//LCD_DrawCircle((uint16_t)(20+read[0]*0.862745), (uint16_t)(20+read[1]*1.176), 4 );
 		if(cnt > 1)
 		{
-			LCD_DrawUniLine((uint16_t)(120+read[i]*0.862745), (uint16_t)(160+read[i+1]*1.176), plot[0], plot[1]);
+			LCD_DrawUniLine((uint16_t)(120+received[0]*0.862745), (uint16_t)(160+received[1]*1.176), plot[0], plot[1]);
 		}
-		plot[0] = (uint16_t)(120+read[i]*0.862745);
-		plot[1] = (uint16_t)(160+read[i+1]*1.176);
+		plot[0] = (uint16_t)(120+received[0]*0.862745);
+		plot[1] = (uint16_t)(160+received[1]*1.176);
 		cnt++;
-		i = i + 2;
+
 
 		
 //	  LCD_SetTextColor(LCD_COLOR_BLUE2); 
@@ -171,12 +172,7 @@ void RxPacket(void const *argument){
 		if(temp == CC2500_SETTING_PKTLEN)
 		{
 	  	status = CC2500_Strobe(CC2500_STROBE_SRX, 0x00);
-		  CC2500_RxPackets((uint8_t*)read, CC2500_SETTING_PKTLEN );
-//			i++;
-//			if(i >= 30)
-//			{
-//				i =0;
-//			}
+		  CC2500_RxPackets((uint8_t*)received, CC2500_SETTING_PKTLEN );
 		}
 		osDelay(100);
 		//printf("Read is %d %d \n", read[0], read[1]);

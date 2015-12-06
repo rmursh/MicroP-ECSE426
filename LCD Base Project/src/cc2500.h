@@ -165,7 +165,7 @@ CC2500_STROBE_SNOP         =      ((uint8_t)0x3D)
 #define CC2500_SETTING_PKTCTRL1						0x08
 #define CC2500_SETTING_PKTCTRL0 						0x04
 #define CC2500_SETTING_ADDR 								0x00 // Global Broadcast Address
-#define CC2500_SETTING_PKTLEN 							0x04 // Packet Length of 3 bytes (0xFF)
+#define CC2500_SETTING_PKTLEN 							0x08 // Packet Length of 3 bytes (0xFF)
 
   /** @defgroup CC2500_Exported_Macros
   * @{
