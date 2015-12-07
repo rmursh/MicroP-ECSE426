@@ -3,7 +3,7 @@
 <title>Static Call Graph - [.\obj\LCD Base Project.axf]</title></head>
 <body><HR>
 <H1>Static Call Graph for image .\obj\LCD Base Project.axf</H1><HR>
-<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5050169: Last Updated: Mon Dec 07 06:26:21 2015
+<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5050169: Last Updated: Mon Dec 07 12:47:46 2015
 <BR><P>
 <H3>Maximum Stack Usage =        196 bytes + Unknown(Cycles, Untraceable Function Pointers)</H3><H3>
 Call chain for Maximum Stack Depth:</H3>
@@ -216,25 +216,24 @@ Global Symbols
 <LI><a href="#[82]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rt_systick
 </UL>
 
-<P><STRONG><a name="[85]"></a>setGrid</STRONG> (Thumb, 218 bytes, Stack size 16 bytes, main.o(.text))
-<BR><BR>[Stack]<UL><LI>Max Depth = 112<LI>Call Chain = setGrid &rArr; LCD_DrawLine &rArr; DMA2D_Init
-</UL>
-<BR>[Calls]<UL><LI><a href="#[87]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_SetTextColor
+<P><STRONG><a name="[85]"></a>setGrid</STRONG> (Thumb, 218 bytes, Stack size 16 bytes, main.o(.text), UNUSED)
+<BR><BR>[Calls]<UL><LI><a href="#[87]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_SetTextColor
 <LI><a href="#[86]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_SetFont
 <LI><a href="#[88]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_DrawLine
 <LI><a href="#[89]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_DisplayStringLine
 <LI><a href="#[8a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_DisplayChar
 </UL>
-<BR>[Called By]<UL><LI><a href="#[77]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DisplayLCD
-</UL>
 
-<P><STRONG><a name="[77]"></a>DisplayLCD</STRONG> (Thumb, 192 bytes, Stack size 0 bytes, main.o(.text))
+<P><STRONG><a name="[77]"></a>DisplayLCD</STRONG> (Thumb, 348 bytes, Stack size 0 bytes, main.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 184<LI>Call Chain = DisplayLCD &rArr; LCD_DrawUniLine &rArr; PutPixel &rArr; LCD_DrawLine &rArr; DMA2D_Init
 </UL>
 <BR>[Calls]<UL><LI><a href="#[8d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;osDelay
+<LI><a href="#[87]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_SetTextColor
+<LI><a href="#[86]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_SetFont
 <LI><a href="#[8c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_DrawUniLine
+<LI><a href="#[89]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_DisplayStringLine
+<LI><a href="#[8a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_DisplayChar
 <LI><a href="#[8b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_Clear
-<LI><a href="#[85]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;setGrid
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> main.o(.constdata)
 </UL>
@@ -406,6 +405,7 @@ Global Symbols
 
 <P><STRONG><a name="[86]"></a>LCD_SetFont</STRONG> (Thumb, 6 bytes, Stack size 0 bytes, stm32f429i_discovery_lcd.o(.text))
 <BR><BR>[Called By]<UL><LI><a href="#[9c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_LayerInit
+<LI><a href="#[77]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DisplayLCD
 <LI><a href="#[85]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;setGrid
 </UL>
 
@@ -435,6 +435,7 @@ Global Symbols
 <BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = LCD_SetTextColor
 </UL>
 <BR>[Called By]<UL><LI><a href="#[d3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_DrawFullRect
+<LI><a href="#[77]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DisplayLCD
 <LI><a href="#[85]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;setGrid
 </UL>
 
@@ -460,6 +461,7 @@ Global Symbols
 </UL>
 <BR>[Called By]<UL><LI><a href="#[c3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_ClearLine
 <LI><a href="#[89]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_DisplayStringLine
+<LI><a href="#[77]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DisplayLCD
 <LI><a href="#[85]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;setGrid
 </UL>
 
@@ -488,7 +490,8 @@ Global Symbols
 </UL>
 <BR>[Calls]<UL><LI><a href="#[8a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_DisplayChar
 </UL>
-<BR>[Called By]<UL><LI><a href="#[85]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;setGrid
+<BR>[Called By]<UL><LI><a href="#[77]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DisplayLCD
+<LI><a href="#[85]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;setGrid
 </UL>
 
 <P><STRONG><a name="[c7]"></a>LCD_SetDisplayWindow</STRONG> (Thumb, 92 bytes, Stack size 24 bytes, stm32f429i_discovery_lcd.o(.text), UNUSED)

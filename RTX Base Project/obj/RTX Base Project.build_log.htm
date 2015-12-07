@@ -21,166 +21,93 @@ Target DLL:      STLink\ST-LINKIII-KEIL_SWO.dll V2.0.15.0_KEIL
 Dialog DLL:      TCM.DLL V1.14.5.0
  
 <h2>Project:</h2>
-C:\Users\dalman\Downloads\MicroP-ECSE426\RTX Base Project\RTX Base Project.uvprojx
-Project File Date:  12/05/2015
+C:\Users\rmursh\Downloads\MicroP-ECSE426\RTX Base Project\RTX Base Project.uvprojx
+Project File Date:  12/07/2015
 
 <h2>Output:</h2>
 *** Using Compiler 'V5.05 update 2 (build 169)', folder: 'C:\Keil_v5\ARM\ARMCC\Bin'
 Build target 'Target 1'
 compiling main.c...
-src\calculate_angle_tilted.h(37): warning:  #1-D: last line of file ends without a newline
-  float calculate_roll(float* calibrated_data);
-src\cc2500.h(188): warning:  #1-D: last line of file ends without a newline
-  angle_data CC2500_RXData(void);
-src\main.c(107): warning:  #1035-D: single-precision operand implicitly converted to double-precision
-                angles.pitch = (uint8_t)20*sin(angles.roll/
-I)+20;
-src\main.c(104): warning:  #177-D: variable "i" was declared but never referenced
-                int i;
-src\main.c(90): warning:  #550-D: variable "mode_filter" was set but never used
+src\Ext_Sensor.h(21): warning:  #1295-D: Deprecated declaration init_acc - give arg types
+  void init_acc();
+src\Ext_Sensor.h(22): warning:  #1-D: last line of file ends without a newline
+  void init_gyro();
+src\Ext_Sensor.h(22): warning:  #1295-D: Deprecated declaration init_gyro - give arg types
+  void init_gyro();
+src\acc_thread.h(21): warning:  #1295-D: Deprecated declaration EXTI2_IRQHandler - give arg types
+  void EXTI2_IRQHandler ();
+src\acc_thread.h(22): warning:  #1295-D: Deprecated declaration EXTI1_IRQHandler - give arg types
+  void EXTI1_IRQHandler ();
+src\acc_thread.h(26): warning:  #1-D: last line of file ends without a newline
+  extern osMutexId mutex;
+src\main.c(115): warning:  #550-D: variable "mode_filter" was set but never used
         uint8_t mode_filter, transmit_mode;
-src\main.c(90): warning:  #550-D: variable "transmit_mode" was set but never used
+src\main.c(115): warning:  #550-D: variable "transmit_mode" was set but never used
         uint8_t mode_filter, transmit_mode;
-src\main.c(93): warning:  #177-D: variable "pkt" was declared but never referenced
+src\main.c(117): warning:  #177-D: variable "a" was declared but never referenced
+        uint8_t a =0;
+src\main.c(118): warning:  #177-D: variable "b" was declared but never referenced
+        uint8_t b  = 0;
+src\main.c(119): warning:  #177-D: variable "pkt" was declared but never referenced
         Packet pkt;
-src\main.c(195): warning:  #1-D: last line of file ends without a newline
-  //}
-src\main.c: 8 warnings, 0 errors
+src\main.c(120): warning:  #177-D: variable "pitch" was declared but never referenced
+        float pitch =0;
+src\main.c(121): warning:  #177-D: variable "roll" was declared but never referenced
+        float roll = -60;
+src\main.c: 13 warnings, 0 errors
 compiling fputc_debug.c...
-compiling calculate_angle_tilted.c...
-src\calculate_angle_tilted.h(37): warning:  #1-D: last line of file ends without a newline
-  float calculate_roll(float* calibrated_data);
-src\calculate_angle_tilted.c(65): warning:  #1-D: last line of file ends without a newline
-  }
-src\calculate_angle_tilted.c: 2 warnings, 0 errors
-compiling calibrate.c...
-src\calibrate.h(23): warning:  #1-D: last line of file ends without a newline
-  void get_calibration_data(float[3], float* calibrated_data);
-src\calibrate.c: 1 warning, 0 errors
-compiling configure_accelerometer.c...
-src\configure_accelerometer.h(23): warning:  #1-D: last line of file ends without a newline
-  void set_Accelerometer_MEM(void);
-src\configure_accelerometer.c(39): warning:  #1-D: last line of file ends without a newline
-        }
-src\configure_accelerometer.c: 2 warnings, 0 errors
-compiling Keypad.c...
-src\keypad.h(51): warning:  #1-D: last line of file ends without a newline
-  extern void keypad_timer_init(void);
-src\Keypad.c(72): warning:  #177-D: variable "read" was declared but never referenced
-        uint8_t read = 0;
-src\Keypad.c(176): warning:  #1-D: last line of file ends without a newline
-  }
-src\Keypad.c(7): warning:  #177-D: variable "NVIC_InitStructure" was declared but never referenced
-  static NVIC_InitTypeDef NVIC_InitStructure;
-src\Keypad.c(8): warning:  #177-D: variable "EXTI_InitStructure" was declared but never referenced
-  static EXTI_InitTypeDef   EXTI_InitStructure;
-src\Keypad.c(9): warning:  #177-D: variable "TIM_InitStruct" was declared but never referenced
-  static TIM_TimeBaseInitTypeDef TIM_InitStruct;
-src\Keypad.c(10): warning:  #177-D: variable "TIM_OCInitStructure" was declared but never referenced
-  static TIM_OCInitTypeDef  TIM_OCInitStructure;
-src\Keypad.c(11): warning:  #177-D: variable "adc_init_s" was declared but never referenced
-  static ADC_InitTypeDef adc_init_s;
-src\Keypad.c(12): warning:  #177-D: variable "adc_common_init_s" was declared but never referenced
-  static ADC_CommonInitTypeDef adc_common_init_s;
-src\Keypad.c: 9 warnings, 0 errors
-compiling MEM_Interrupt.c...
-compiling MovingAverageFilter.c...
-compiling SevenSegDisplay.c...
-src\SevenSegDisplay.h(18): warning:  #1295-D: Deprecated declaration initializeDisplay - give arg types
-  void initializeDisplay();
-src\SevenSegDisplay.h(66): warning:  #1295-D: Deprecated declaration configTIM4 - give arg types
-  void configTIM4();
-src\SevenSegDisplay.h(68): warning:  #1295-D: Deprecated declaration LED_clear - give arg types
-  void LED_clear();
-src\SevenSegDisplay.c: 3 warnings, 0 errors
-compiling TemperatureSensor.c...
-src\TemperatureSensor.h(14): warning:  #1295-D: Deprecated declaration runTemperatureSensorMoving - give arg types
-  float runTemperatureSensorMoving();
-src\TemperatureSensor.c(50): warning:  #1035-D: single-precision operand implicitly converted to double-precision
-            Vsense = (3.0*temp)/ 4096;
-src\TemperatureSensor.c(67): warning:  #1035-D: single-precision operand implicitly converted to double-precision
-            Vsense = (3.0*temp)/ 4096;
-src\TemperatureSensor.c: 3 warnings, 0 errors
-compiling temperature_thread.c...
-.\src\SevenSegDisplay.h(18): warning:  #1295-D: Deprecated declaration initializeDisplay - give arg types
-  void initializeDisplay();
-.\src\SevenSegDisplay.h(66): warning:  #1295-D: Deprecated declaration configTIM4 - give arg types
-  void configTIM4();
-.\src\SevenSegDisplay.h(68): warning:  #1295-D: Deprecated declaration LED_clear - give arg types
-  void LED_clear();
-src\TemperatureSensor.h(14): warning:  #1295-D: Deprecated declaration runTemperatureSensorMoving - give arg types
-  float runTemperatureSensorMoving();
-src\temperature_thread.h(34): warning:  #1-D: last line of file ends without a newline
-  void Temperature_Tim_Interrupt(void);
-src\SevenSegDisplay.h(18): warning:  #1295-D: Deprecated declaration initializeDisplay - give arg types
-  void initializeDisplay();
-src\SevenSegDisplay.h(66): warning:  #1295-D: Deprecated declaration configTIM4 - give arg types
-  void configTIM4();
-src\SevenSegDisplay.h(68): warning:  #1295-D: Deprecated declaration LED_clear - give arg types
-  void LED_clear();
-src\temperature_thread.c(91): warning:  #1-D: last line of file ends without a newline
-  }
-src\temperature_thread.c: 9 warnings, 0 errors
-compiling accelerometer_thread.c...
-.\src\configure_accelerometer.h(23): warning:  #1-D: last line of file ends without a newline
-  void set_Accelerometer_MEM(void);
-src\calibrate.h(23): warning:  #1-D: last line of file ends without a newline
-  void get_calibration_data(float[3], float* calibrated_data);
-src\calculate_angle_tilted.h(37): warning:  #1-D: last line of file ends without a newline
-  float calculate_roll(float* calibrated_data);
-.\src\SevenSegDisplay.h(18): warning:  #1295-D: Deprecated declaration initializeDisplay - give arg types
-  void initializeDisplay();
-.\src\SevenSegDisplay.h(66): warning:  #1295-D: Deprecated declaration configTIM4 - give arg types
-  void configTIM4();
-.\src\SevenSegDisplay.h(68): warning:  #1295-D: Deprecated declaration LED_clear - give arg types
-  void LED_clear();
-src\temperature_thread.h(34): warning:  #1-D: last line of file ends without a newline
-  void Temperature_Tim_Interrupt(void);
-src\keypad.h(51): warning:  #1-D: last line of file ends without a newline
-  extern void keypad_timer_init(void);
-src\accelerometer_thread.c(25): warning:  #550-D: parameter "maState_x" was set but never used
-  void initialize_buffers_for_filter(mAState maState_x, mAState maState_y, mAState maState_z)
-src\accelerometer_thread.c(25): warning:  #550-D: parameter "maState_y" was set but never used
-  void initialize_buffers_for_filter(mAState maState_x, mAState maState_y, mAState maState_z)
-src\accelerometer_thread.c(25): warning:  #550-D: parameter "maState_z" was set but never used
-  void initialize_buffers_for_filter(mAState maState_x, mAState maState_y, mAState maState_z)
-src\accelerometer_thread.c: 11 warnings, 0 errors
-compiling DisplayLED.c...
-.\src\SevenSegDisplay.h(18): warning:  #1295-D: Deprecated declaration initializeDisplay - give arg types
-  void initializeDisplay();
-.\src\SevenSegDisplay.h(66): warning:  #1295-D: Deprecated declaration configTIM4 - give arg types
-  void configTIM4();
-.\src\SevenSegDisplay.h(68): warning:  #1295-D: Deprecated declaration LED_clear - give arg types
-  void LED_clear();
-src\TemperatureSensor.h(14): warning:  #1295-D: Deprecated declaration runTemperatureSensorMoving - give arg types
-  float runTemperatureSensorMoving();
-src\temperature_thread.h(34): warning:  #1-D: last line of file ends without a newline
-  void Temperature_Tim_Interrupt(void);
-src\SevenSegDisplay.h(18): warning:  #1295-D: Deprecated declaration initializeDisplay - give arg types
-  void initializeDisplay();
-src\SevenSegDisplay.h(66): warning:  #1295-D: Deprecated declaration configTIM4 - give arg types
-  void configTIM4();
-src\SevenSegDisplay.h(68): warning:  #1295-D: Deprecated declaration LED_clear - give arg types
-  void LED_clear();
-src\keypad.h(51): warning:  #1-D: last line of file ends without a newline
-  extern void keypad_timer_init(void);
-src\DisplayLED.h(3): warning:  #1-D: last line of file ends without a newline
-  void configTIM2(void);
-src\DisplayLED.c(36): warning:  #550-D: variable "tokentemp" was set but never used
-        uint32_t tokentemp;          // Return of semwait
-src\DisplayLED.c(196): warning:  #1-D: last line of file ends without a newline
-  }
-src\DisplayLED.c: 12 warnings, 0 errors
 compiling cc2500.c...
-src\calculate_angle_tilted.h(37): warning:  #1-D: last line of file ends without a newline
-  float calculate_roll(float* calibrated_data);
-src\cc2500.h(188): warning:  #1-D: last line of file ends without a newline
-  angle_data CC2500_RXData(void);
-src\cc2500.c(229): warning:  #177-D: variable "bytes_in_txfifo" was declared but never referenced
-        uint8_t bytes_in_txfifo;
-src\cc2500.c(467): warning:  #1-D: last line of file ends without a newline
+src\cc2500.c(421): warning:  #1-D: last line of file ends without a newline
   }
-src\cc2500.c: 4 warnings, 0 errors
+src\cc2500.c: 1 warning, 0 errors
+compiling acc_thread.c...
+src\acc_thread.h(21): warning:  #1295-D: Deprecated declaration EXTI2_IRQHandler - give arg types
+  void EXTI2_IRQHandler ();
+src\acc_thread.h(22): warning:  #1295-D: Deprecated declaration EXTI1_IRQHandler - give arg types
+  void EXTI1_IRQHandler ();
+src\acc_thread.h(26): warning:  #1-D: last line of file ends without a newline
+  extern osMutexId mutex;
+src\acc_thread.c: 3 warnings, 0 errors
+compiling Ext_Sensor.c...
+src\Ext_Sensor.h(21): warning:  #1295-D: Deprecated declaration init_acc - give arg types
+  void init_acc();
+src\Ext_Sensor.h(22): warning:  #1-D: last line of file ends without a newline
+  void init_gyro();
+src\Ext_Sensor.h(22): warning:  #1295-D: Deprecated declaration init_gyro - give arg types
+  void init_gyro();
+src\Ext_Sensor.c: 3 warnings, 0 errors
+compiling lsm9ds1.c...
+src\lsm9ds1.c(281): warning:  #1035-D: single-precision operand implicitly converted to double-precision
+          *out =(float)(
+SM9DS1_SENSITIVITY_2G * (float)aggregateResult)/1000;
+src\lsm9ds1.c(291): warning:  #1035-D: single-precision operand implicitly converted to double-precision
+          *out =(float)(
+SM9DS1_SENSITIVITY_4G * (float)aggregateResult)/1000;
+src\lsm9ds1.c(301): warning:  #1035-D: single-precision operand implicitly converted to double-precision
+          *out =(float)(
+SM9DS1_SENSITIVITY_8G * (float)aggregateResult)/1000;
+src\lsm9ds1.c(311): warning:  #1035-D: single-precision operand implicitly converted to double-precision
+          *out =(float)(
+SM9DS1_SENSITIVITY_16G * (float)aggregateResult)/1000;
+src\lsm9ds1.c(261): warning:  #177-D: variable "offsetX" was declared but never referenced
+        uint8_t offsetX, offsetY, offsetZ;
+src\lsm9ds1.c(261): warning:  #177-D: variable "offsetY" was declared but never referenced
+        uint8_t offsetX, offsetY, offsetZ;
+src\lsm9ds1.c(261): warning:  #177-D: variable "offsetZ" was declared but never referenced
+        uint8_t offsetX, offsetY, offsetZ;
+src\lsm9ds1.c(352): warning:  #1035-D: single-precision operand implicitly converted to double-precision
+          *out =(float)(
+SM9DS1_SENSITIVITY_245dps * (float)aggregateResult)/1000;
+src\lsm9ds1.c(362): warning:  #1035-D: single-precision operand implicitly converted to double-precision
+          *out =(float)(
+SM9DS1_SENSITIVITY_500dps * (float)aggregateResult)/1000;
+src\lsm9ds1.c(331): warning:  #177-D: variable "offsetX" was declared but never referenced
+        uint8_t offsetX, offsetY, offsetZ;
+src\lsm9ds1.c(331): warning:  #177-D: variable "offsetY" was declared but never referenced
+        uint8_t offsetX, offsetY, offsetZ;
+src\lsm9ds1.c(331): warning:  #177-D: variable "offsetZ" was declared but never referenced
+        uint8_t offsetX, offsetY, offsetZ;
+src\lsm9ds1.c: 12 warnings, 0 errors
 compiling lis3dsh.c...
 Accelerometer_Drivers\src\lis3dsh.c(318): warning:  #1035-D: single-precision operand implicitly converted to double-precision
           *out =(float)(
@@ -234,8 +161,8 @@ compiling stm32f4xx_wwdg.c...
 assembling startup_stm32f40_41xxx.s...
 compiling system_stm32f4xx.c...
 linking...
-Program Size: Code=35660 RO-data=1116 RW-data=428 ZI-data=10476  
-".\obj\RTX Base Project.axf" - 0 Error(s), 69 Warning(s).
+Program Size: Code=25556 RO-data=852 RW-data=456 ZI-data=30656  
+".\obj\RTX Base Project.axf" - 0 Error(s), 37 Warning(s).
 
 <h2>Software Packages used:</h2>
 
@@ -281,8 +208,8 @@ Package Vendor: Keil
    * Component: WWDG Version: 1.3.0
 
 <h2>Collection of Component include folders:</h2>
-  C:\Users\dalman\Downloads\MicroP-ECSE426\RTX Base Project\RTE
-  C:\Users\dalman\Downloads\MicroP-ECSE426\RTX Base Project\RTE\Device\STM32F407VG
+  C:\Users\rmursh\Downloads\MicroP-ECSE426\RTX Base Project\RTE
+  C:\Users\rmursh\Downloads\MicroP-ECSE426\RTX Base Project\RTE\Device\STM32F407VG
   C:\Keil_v5\ARM\PACK\ARM\CMSIS\4.3.0\CMSIS\Include
   C:\Keil_v5\ARM\PACK\ARM\CMSIS\4.3.0\CMSIS\RTOS\RTX\INC
   C:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\1.0.8\Device\Include

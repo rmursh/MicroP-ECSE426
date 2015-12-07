@@ -4,6 +4,7 @@
 ".\obj\stm32f429i_discovery_sdram.o"
 ".\obj\fputc_debug.o"
 ".\obj\cc2500.o"
+".\obj\lcdinterface.o"
 ".\obj\calculate_angle_tilted.o"
 ".\obj\stm32f429i_discovery_l3gd20.o"
 "C:\Keil_v5\ARM\PACK\ARM\CMSIS\4.3.0\CMSIS\Lib\ARM\arm_cortexM4lf_math.lib"

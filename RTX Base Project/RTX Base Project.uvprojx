@@ -423,119 +423,44 @@
               <FilePath>.\src\fputc_debug.c</FilePath>
             </File>
             <File>
-              <FileName>calculate_angle_tilted.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\src\calculate_angle_tilted.c</FilePath>
-            </File>
-            <File>
-              <FileName>calculate_angle_tilted.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\src\calculate_angle_tilted.h</FilePath>
-            </File>
-            <File>
-              <FileName>calibrate.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\src\calibrate.c</FilePath>
-            </File>
-            <File>
-              <FileName>calibrate.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\src\calibrate.h</FilePath>
-            </File>
-            <File>
-              <FileName>configure_accelerometer.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\src\configure_accelerometer.c</FilePath>
-            </File>
-            <File>
-              <FileName>configure_accelerometer.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\src\configure_accelerometer.h</FilePath>
-            </File>
-            <File>
-              <FileName>Keypad.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\src\Keypad.c</FilePath>
-            </File>
-            <File>
-              <FileName>Keypad.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\src\Keypad.h</FilePath>
-            </File>
-            <File>
-              <FileName>MEM_Interrupt.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\src\MEM_Interrupt.c</FilePath>
-            </File>
-            <File>
-              <FileName>MEM_Interrupt.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\src\MEM_Interrupt.h</FilePath>
-            </File>
-            <File>
-              <FileName>MovingAverageFilter.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\src\MovingAverageFilter.c</FilePath>
-            </File>
-            <File>
-              <FileName>MovingAverageFilter.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\src\MovingAverageFilter.h</FilePath>
-            </File>
-            <File>
               <FileName>osObjects.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\src\osObjects.h</FilePath>
             </File>
             <File>
-              <FileName>SevenSegDisplay.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\src\SevenSegDisplay.c</FilePath>
-            </File>
-            <File>
-              <FileName>SevenSegDisplay.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\src\SevenSegDisplay.h</FilePath>
-            </File>
-            <File>
-              <FileName>TemperatureSensor.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\src\TemperatureSensor.c</FilePath>
-            </File>
-            <File>
-              <FileName>TemperatureSensor.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\src\TemperatureSensor.h</FilePath>
-            </File>
-            <File>
-              <FileName>temperature_thread.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\src\temperature_thread.h</FilePath>
-            </File>
-            <File>
-              <FileName>temperature_thread.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\src\temperature_thread.c</FilePath>
-            </File>
-            <File>
-              <FileName>accelerometer_thread.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\src\accelerometer_thread.h</FilePath>
-            </File>
-            <File>
-              <FileName>accelerometer_thread.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\src\accelerometer_thread.c</FilePath>
-            </File>
-            <File>
-              <FileName>DisplayLED.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\src\DisplayLED.c</FilePath>
-            </File>
-            <File>
               <FileName>cc2500.c</FileName>
               <FileType>1</FileType>
               <FilePath>.\src\cc2500.c</FilePath>
+            </File>
+            <File>
+              <FileName>acc_thread.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\src\acc_thread.c</FilePath>
+            </File>
+            <File>
+              <FileName>acc_thread.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\src\acc_thread.h</FilePath>
+            </File>
+            <File>
+              <FileName>Ext_Sensor.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\src\Ext_Sensor.c</FilePath>
+            </File>
+            <File>
+              <FileName>Ext_Sensor.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\src\Ext_Sensor.h</FilePath>
+            </File>
+            <File>
+              <FileName>lsm9ds1.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\src\lsm9ds1.c</FilePath>
+            </File>
+            <File>
+              <FileName>lsm9ds1.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\src\lsm9ds1.h</FilePath>
             </File>
           </Files>
         </Group>

@@ -21,8 +21,8 @@ Target DLL:      STLink\ST-LINKIII-KEIL_SWO.dll V2.0.15.0_KEIL
 Dialog DLL:      TCM.DLL V1.14.5.0
  
 <h2>Project:</h2>
-C:\Users\dalman\Downloads\MicroP-ECSE426\LCD Base Project\LCD Base Project.uvprojx
-Project File Date:  12/06/2015
+C:\Users\rmursh\Downloads\MicroP-ECSE426\LCD Base Project\LCD Base Project.uvprojx
+Project File Date:  12/07/2015
 
 <h2>Output:</h2>
 *** Using Compiler 'V5.05 update 2 (build 169)', folder: 'C:\Keil_v5\ARM\ARMCC\Bin'
@@ -30,40 +30,26 @@ Build target 'Target 1'
 compiling main.c...
 src\calculate_angle_tilted.h(37): warning:  #1-D: last line of file ends without a newline
   float calculate_roll(float* calibrated_data);
-src\cc2500.h(188): warning:  #1-D: last line of file ends without a newline
+src\cc2500.h(200): warning:  #1-D: last line of file ends without a newline
   angle_data CC2500_RXData(void);
 src\main.c(95): warning:  #177-D: variable "s" was declared but never referenced
         char* s;
 src\main.c(96): warning:  #177-D: variable "i" was declared but never referenced
         int cnt, i = 0;
-src\main.c(128): warning:  #177-D: variable "i" was declared but never referenced
+src\main.c(145): warning:  #177-D: variable "i" was declared but never referenced
                 int i = 0;
-src\main.c(118): warning:  #550-D: variable "mode_filter" was set but never used
+src\main.c(135): warning:  #550-D: variable "mode_filter" was set but never used
         uint8_t mode_filter, transmit_mode;
-src\main.c(118): warning:  #550-D: variable "transmit_mode" was set but never used
+src\main.c(135): warning:  #550-D: variable "transmit_mode" was set but never used
         uint8_t mode_filter, transmit_mode;
-src\main.c(120): warning:  #177-D: variable "buf" was declared but never referenced
+src\main.c(137): warning:  #177-D: variable "buf" was declared but never referenced
         uint8_t buf[2];
-src\main.c(224): warning:  #1-D: last line of file ends without a newline
+src\main.c(241): warning:  #1-D: last line of file ends without a newline
   }
 src\main.c: 9 warnings, 0 errors
-compiling cc2500.c...
-src\calculate_angle_tilted.h(37): warning:  #1-D: last line of file ends without a newline
-  float calculate_roll(float* calibrated_data);
-src\cc2500.h(188): warning:  #1-D: last line of file ends without a newline
-  angle_data CC2500_RXData(void);
-src\cc2500.c(246): warning:  #177-D: variable "bytes_in_txfifo" was declared but never referenced
-        uint8_t bytes_in_txfifo;
-src\cc2500.c(260): warning:  #177-D: variable "bytes_in_rxfifo" was declared but never referenced
-        uint8_t bytes_in_rxfifo;
-src\cc2500.c(262): warning:  #177-D: variable "crc" was declared but never referenced
-        uint8_t crc;
-src\cc2500.c(481): warning:  #1-D: last line of file ends without a newline
-  }
-src\cc2500.c: 6 warnings, 0 errors
 linking...
-Program Size: Code=25128 RO-data=11284 RW-data=192 ZI-data=30616  
-".\obj\LCD Base Project.axf" - 0 Error(s), 15 Warning(s).
+Program Size: Code=25320 RO-data=11284 RW-data=192 ZI-data=30616  
+".\obj\LCD Base Project.axf" - 0 Error(s), 9 Warning(s).
 
 <h2>Software Packages used:</h2>
 
@@ -112,8 +98,8 @@ Package Vendor: Keil
    * Component: WWDG Version: 1.3.0
 
 <h2>Collection of Component include folders:</h2>
-  C:\Users\dalman\Downloads\MicroP-ECSE426\LCD Base Project\RTE
-  C:\Users\dalman\Downloads\MicroP-ECSE426\LCD Base Project\RTE\Device\STM32F429ZI
+  C:\Users\rmursh\Downloads\MicroP-ECSE426\LCD Base Project\RTE
+  C:\Users\rmursh\Downloads\MicroP-ECSE426\LCD Base Project\RTE\Device\STM32F429ZI
   C:\Keil_v5\ARM\PACK\ARM\CMSIS\4.3.0\CMSIS\Include
   C:\Keil_v5\ARM\PACK\ARM\CMSIS\4.3.0\CMSIS\RTOS\RTX\INC
   C:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\1.0.8\Device\Include

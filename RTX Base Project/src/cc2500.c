@@ -223,55 +223,9 @@ void CC2500_Write(uint8_t* pBuffer, uint8_t WriteAddr, uint16_t NumByteToWrite) 
 	CC2500_CS_HIGH(); 
 }
 
-void CC2500_TXData(angle_data data)
-{
-	uint8_t transmitted_data[2];
-	uint8_t bytes_in_txfifo;
-	transmitted_data[0] = data.pitch;
-	transmitted_data[1] = data.roll;
-	CC2500_Strobe(CC2500_STROBE_SIDLE, 0x00);
-	//while(CC2500_Strobe(CC2500_STROBE_SNOP, 0x00) != 0);
-	CC2500_Strobe(CC2500_STROBE_SFTX, 0x00);
-	CC2500_Write(transmitted_data,CC2500_FIFO_ADDR , CC2500_SETTING_PKTLEN);
-	
-	CC2500_Strobe(CC2500_STROBE_STX, 0x00);
-	//while(CC2500_Strobe(CC2500_STROBE_SNOP, 0x00) != 2);
-	//while(CC2500_Strobe(CC2500_STROBE_SNOP, 0x00) != 0);
-}
 
-angle_data CC2500_RXData(void){
-	uint8_t bytes_in_rxfifo;
-	uint8_t data[4];
-	uint8_t crc;
-	angle_data processed_data;
-	
-	CC2500_Strobe(CC2500_STROBE_SRX, 0x00);
-	while(CC2500_Strobe(CC2500_STROBE_SNOP, 0x00) != 1);
-	
-	CC2500_Read(&bytes_in_rxfifo, CC2500_STATUS_REG_RXBYTES , 1);
-	bytes_in_rxfifo = bytes_in_rxfifo & 0x7F;
-	if(bytes_in_rxfifo >= 4){
-		CC2500_Read(data, 0xFF, 4);
-		crc = data[3] & 0x80;
-		
-		if(crc){
-			processed_data.pitch = data[0];
-			processed_data.roll = data[1];
-		}
-		CC2500_Strobe(CC2500_STROBE_SIDLE, 0x00);
-	
-		while(CC2500_Strobe(CC2500_STROBE_SNOP, 0x00) != 0);
-	
-		CC2500_Strobe(CC2500_STROBE_SFRX, 0x00); 
-		
-		// Return to RX mode
-		CC2500_Strobe(CC2500_STROBE_SRX, 0x00); 
-		
-		// Wait until mode changes
-		while(CC2500_Strobe(CC2500_STROBE_SNOP, 0x00) != 1);
-	}
-	return processed_data;
-}
+
+
 /**
   * @brief  Transmits one packet
   * @param  Memory pointer to packet for Tx

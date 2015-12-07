@@ -94,8 +94,25 @@ void setGrid(){
 void DisplayLCD(void const *argument){
 	char* s;
 	int cnt, i = 0;
-	   LCD_Clear(LCD_COLOR_WHITE);
-     setGrid();
+	  LCD_Clear(LCD_COLOR_WHITE);
+	  LCD_SetFont(&Font8x8);
+	  LCD_SetTextColor(LCD_COLOR_BLACK);
+	  LCD_DisplayStringLine(1, (uint8_t*)"   NOW DISPLAYING TRAJECTORY     ");
+	  LCD_DisplayStringLine(310, (uint8_t*)"         Y DISPLACEMENT     ");
+		LCD_DisplayChar(90, 10, (uint8_t)'X');
+    LCD_DisplayChar(110, 10, (uint8_t)'D');
+		LCD_DisplayChar(120, 10, (uint8_t)'I');
+		LCD_DisplayChar(130, 10, (uint8_t)'S');
+		LCD_DisplayChar(140, 10, (uint8_t)'P');
+		LCD_DisplayChar(150, 10, (uint8_t)'L');
+		LCD_DisplayChar(160, 10, (uint8_t)'A');
+		LCD_DisplayChar(170, 10, (uint8_t)'C');
+		LCD_DisplayChar(180, 10, (uint8_t)'E');
+		LCD_DisplayChar(190, 10, (uint8_t)'M');
+		LCD_DisplayChar(200, 10, (uint8_t)'E');
+		LCD_DisplayChar(210, 10, (uint8_t)'N');
+		LCD_DisplayChar(220, 10, (uint8_t)'T');
+     //setGrid();
 	while(1){
 		if((cnt > 1)&&(received[0] < 255)&&(received[1] < 255))
 		{
