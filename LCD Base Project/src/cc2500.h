@@ -6,7 +6,9 @@
 #include "osObjects.h" 
 #include "calculate_angle_tilted.h"
 
-
+/*----------------------------------------------------------------------------
+ * SPI CONFIG
+ *---------------------------------------------------------------------------*/
 #define CC2500_SPI                        SPI4
 #define CC2500_SPI_CLK                    RCC_APB2Periph_SPI4
 
@@ -41,7 +43,9 @@
 #define CC2500_SPI_INT_EXTI_IRQn          EXTI4_IRQn
 
 
-
+/*----------------------------------------------------------------------------
+ * STROBE CONFIG
+ *---------------------------------------------------------------------------*/
 typedef enum {
 CC2500_STROBE_SRES         =      ((uint8_t)0x30),
 CC2500_STROBE_SFSTXON      =      ((uint8_t)0x31),
@@ -58,7 +62,9 @@ CC2500_STROBE_SWORRST      =      ((uint8_t)0x3C),
 CC2500_STROBE_SNOP         =      ((uint8_t)0x3D)
 } StrobeCommand;
 
-
+/*----------------------------------------------------------------------------
+ * DEFINE STATUS REGISTERS
+ *---------------------------------------------------------------------------*/
 #define CC2500_STATUS_REG_PARTNUM         ((uint8_t)0x30)
 #define CC2500_STATUS_REG_VERSION         ((uint8_t)0x31)
 #define CC2500_STATUS_REG_FREQEST         ((uint8_t)0x32)
@@ -74,6 +80,9 @@ CC2500_STROBE_SNOP         =      ((uint8_t)0x3D)
 #define CC2500_STATUS_REG_RCCTRL1         ((uint8_t)0x3C)
 #define CC2500_STATUS_REG_RCCTRL0         ((uint8_t)0x3D)
 
+/*----------------------------------------------------------------------------
+ * REGISTER MAPPING
+ *---------------------------------------------------------------------------*/
 
 #define CC2500_CFG_REG_IOCFG2             ((uint8_t)0x00)
 #define CC2500_CFG_REG_IOCFG1             ((uint8_t)0x01)
@@ -127,6 +136,9 @@ CC2500_STROBE_SNOP         =      ((uint8_t)0x3D)
 
 #define CC2500_FIFO_ADDR									((uint8_t)0x3F)
 
+/*----------------------------------------------------------------------------
+ * REGISTER SETTINGS
+ *---------------------------------------------------------------------------*/
 
 #define CC2500_SETTING_FSCTRL1 						0x0C//0x12 //Frequency offset = 304kHz
 #define CC2500_SETTING_FSCTRL0 						0x00

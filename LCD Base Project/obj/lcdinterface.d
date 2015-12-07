@@ -9,8 +9,8 @@
 .\obj\lcdinterface.o: C:\Keil_v5\ARM\PACK\ARM\CMSIS\4.3.0\CMSIS\Include\core_cmFunc.h
 .\obj\lcdinterface.o: C:\Keil_v5\ARM\PACK\ARM\CMSIS\4.3.0\CMSIS\Include\core_cmSimd.h
 .\obj\lcdinterface.o: C:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\1.0.8\Device\Include\system_stm32f4xx.h
-.\obj\lcdinterface.o: C:\Users\rmursh\Downloads\MicroP-ECSE426\LCD Base Project\RTE\Device\STM32F429ZI\stm32f4xx_conf.h
-.\obj\lcdinterface.o: C:\Users\rmursh\Downloads\MicroP-ECSE426\LCD Base Project\RTE\RTE_Components.h
+.\obj\lcdinterface.o: C:\Users\dalman\Downloads\MicroP-ECSE426\LCD Base Project\RTE\Device\STM32F429ZI\stm32f4xx_conf.h
+.\obj\lcdinterface.o: C:\Users\dalman\Downloads\MicroP-ECSE426\LCD Base Project\RTE\RTE_Components.h
 .\obj\lcdinterface.o: C:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\1.0.8\Device\StdPeriph_Driver\inc\stm32f4xx_adc.h
 .\obj\lcdinterface.o: C:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\1.0.8\Device\Include\stm32f4xx.h
 .\obj\lcdinterface.o: C:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\1.0.8\Device\StdPeriph_Driver\inc\stm32f4xx_crc.h

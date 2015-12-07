@@ -15,6 +15,7 @@ uint8_t abc[5][5] ={
             };
 uint8_t test[10] = {16,17,18,19,3,4,7,7,9,4};
 uint8_t test2[10] =  {8,9,10,11,6,6,7,12,4,56};
+float received[2] = {0, 0};
 #define RX_PKT 0x01
 
 uint8_t var;

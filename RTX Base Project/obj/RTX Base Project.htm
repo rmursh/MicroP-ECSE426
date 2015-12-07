@@ -3,7 +3,7 @@
 <title>Static Call Graph - [.\obj\RTX Base Project.axf]</title></head>
 <body><HR>
 <H1>Static Call Graph for image .\obj\RTX Base Project.axf</H1><HR>
-<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5050169: Last Updated: Tue Dec 01 03:21:48 2015
+<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5050169: Last Updated: Sat Dec 05 23:12:57 2015
 <BR><P>
 <H3>Maximum Stack Usage =        296 bytes + Unknown(Cycles, Untraceable Function Pointers)</H3><H3>
 Call chain for Maximum Stack Depth:</H3>
@@ -186,7 +186,7 @@ Global Symbols
 
 <P><STRONG><a name="[175]"></a>_free_box</STRONG> (Thumb, 28 bytes, Stack size 0 bytes, hal_cm4.o(.emb_text), UNUSED)
 
-<P><STRONG><a name="[8]"></a>SVC_Handler</STRONG> (Thumb, 168 bytes, Stack size 0 bytes, hal_cm4.o(.emb_text))
+<P><STRONG><a name="[8]"></a>SVC_Handler</STRONG> (Thumb, 148 bytes, Stack size 0 bytes, hal_cm4.o(.emb_text))
 <BR><BR>[Calls]<UL><LI><a href="#[7a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rt_stk_check
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> startup_stm32f40_41xxx.o(RESET)
@@ -248,8 +248,8 @@ Global Symbols
 <LI><a href="#[88]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_ResetBits
 <LI><a href="#[91]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CC2500_TxPacket
 <LI><a href="#[92]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CC2500_Read
-<LI><a href="#[8d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__hardfp_sin
 <LI><a href="#[89]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__2printf
+<LI><a href="#[8d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__hardfp_sin
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> main.o(.constdata)
 </UL>
@@ -2511,7 +2511,7 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[6b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;svcSignalWait
 </UL>
 
-<P><STRONG><a name="[5f]"></a>rt_free_box</STRONG> (Thumb, 44 bytes, Stack size 0 bytes, rt_membox.o(i.rt_free_box))
+<P><STRONG><a name="[5f]"></a>rt_free_box</STRONG> (Thumb, 32 bytes, Stack size 0 bytes, rt_membox.o(i.rt_free_box))
 <BR><BR>[Called By]<UL><LI><a href="#[161]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rt_tsk_delete
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> hal_cm4.o(.emb_text)
@@ -2772,7 +2772,7 @@ Global Symbols
 <LI><a href="#[b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SysTick_Handler
 </UL>
 
-<P><STRONG><a name="[15f]"></a>rt_tsk_create</STRONG> (Thumb, 120 bytes, Stack size 24 bytes, rt_task.o(i.rt_tsk_create))
+<P><STRONG><a name="[15f]"></a>rt_tsk_create</STRONG> (Thumb, 112 bytes, Stack size 24 bytes, rt_task.o(i.rt_tsk_create))
 <BR><BR>[Stack]<UL><LI>Max Depth = 56<LI>Call Chain = rt_tsk_create &rArr; rt_init_context &rArr; rt_init_stack
 </UL>
 <BR>[Calls]<UL><LI><a href="#[160]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dbg_task_notify
@@ -2783,7 +2783,7 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[6c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;svcThreadCreate
 </UL>
 
-<P><STRONG><a name="[161]"></a>rt_tsk_delete</STRONG> (Thumb, 346 bytes, Stack size 40 bytes, rt_task.o(i.rt_tsk_delete))
+<P><STRONG><a name="[161]"></a>rt_tsk_delete</STRONG> (Thumb, 342 bytes, Stack size 40 bytes, rt_task.o(i.rt_tsk_delete))
 <BR><BR>[Stack]<UL><LI>Max Depth = 68<LI>Call Chain = rt_tsk_delete &rArr; rt_dispatch &rArr; rt_put_prio
 </UL>
 <BR>[Calls]<UL><LI><a href="#[7a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rt_stk_check
@@ -2822,7 +2822,7 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[9b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__hardfp_pow
 </UL>
 
-<P><STRONG><a name="[63]"></a>svcDelay</STRONG> (Thumb, 18 bytes, Stack size 8 bytes, rt_cmsis.o(i.svcDelay))
+<P><STRONG><a name="[63]"></a>svcDelay</STRONG> (Thumb, 20 bytes, Stack size 8 bytes, rt_cmsis.o(i.svcDelay))
 <BR><BR>[Stack]<UL><LI>Max Depth = 32<LI>Call Chain = svcDelay &rArr; rt_dly_wait &rArr; rt_block &rArr; rt_put_dly
 </UL>
 <BR>[Calls]<UL><LI><a href="#[164]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rt_ms2tick
@@ -3039,7 +3039,7 @@ Local Symbols
 <LI><a href="#[132]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;isrSemaphoreRelease
 </UL>
 
-<P><STRONG><a name="[164]"></a>rt_ms2tick</STRONG> (Thumb, 60 bytes, Stack size 0 bytes, rt_cmsis.o(i.rt_ms2tick))
+<P><STRONG><a name="[164]"></a>rt_ms2tick</STRONG> (Thumb, 50 bytes, Stack size 0 bytes, rt_cmsis.o(i.rt_ms2tick))
 <BR><BR>[Called By]<UL><LI><a href="#[6b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;svcSignalWait
 <LI><a href="#[68]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;svcSemaphoreWait
 <LI><a href="#[66]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;svcMessageGet

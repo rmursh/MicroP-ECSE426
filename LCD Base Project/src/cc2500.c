@@ -1,8 +1,20 @@
-//#include "cc2500.h"
+/*
+Final Project
+Group 10
+MicroProcessor Systems ECSE 426
+Razi Murshed	
+Danial Almani
+Hannan Aslam
+Oruj Oliver Ahmadov
+Imranul Islam
+*/
 
 #include "cc2500.h"
 #include <stdio.h>
 
+/*----------------------------------------------------------------------------
+ * CONSTANTS
+ *---------------------------------------------------------------------------*/
 /* Set the Read/Write bit to 1 if we are reading, 0 if we are writing */
 #define READWRITE_BIT 			((uint8_t)0x80)
 /* Set the burst bit to 1 if we are reading/writing multiple bytes
@@ -11,9 +23,10 @@
 /* Dummy Byte Send by the SPI Master device in order to generate the Clock to the Slave device */
 #define DUMMY_BYTE          ((uint8_t)0x00)
 #define RSSI_OFFSET           72
-/** @defgroup CC2500_Private_FunctionPrototypes
-  * @{
-  */
+
+/*----------------------------------------------------------------------------
+ * GLOBAL VARIABLES
+ *---------------------------------------------------------------------------*/
 static uint8_t CC2500_SendByte(uint8_t byte);
 static void CC2500_LowLevel_Init(void);
 
@@ -28,15 +41,14 @@ void CC2500_Init(void) {
    CC2500_LowLevel_Init();
    
 	osDelay(50);
-	//for(int i=0; i<50000;i++);
 	 // Wireless configuration as defined on project specification page 9
    uint8_t reg;
    
-	 // reset the device first
+	 // reset device 
 	 CC2500_Strobe(CC2500_STROBE_SRES, DUMMY_BYTE);
 	 osDelay(50);
 	
-	 // put the device in idle mode
+	 // put device in idle mode
 	 CC2500_Strobe(CC2500_STROBE_SIDLE, DUMMY_BYTE);
 	
 	 osDelay(50);

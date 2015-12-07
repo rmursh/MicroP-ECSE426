@@ -1,86 +1,68 @@
-/*----------------------------------------------------------------------------
- * CMSIS-RTOS 'main' function template
- *---------------------------------------------------------------------------*/
+/*
+Final Project
+Group 10
+MicroProcessor Systems ECSE 426
+Razi Murshed	
+Danial Almani
+Hannan Aslam
+Oruj Oliver Ahmadov
+Imranul Islam
+*/
 
 #define osObjectsPublic                     // define objects in main module
 #include "osObjects.h"                      // RTOS object definitions
-//#include "cmsis_os.h"
-
-
 #include "stm32f4xx.h"                  // Device header
-
 #include "stm32f4xx_conf.h"
 #include "stm32f429i_discovery.h"
 #include "stm32f429i_discovery_lcd.h"
 #include "stm32f429i_discovery_l3gd20.h"
-//#include "background16bpp.h"
 #include "cc2500.h"
-
 #include <stdio.h>
 #include <string.h>
 
-//#include "LCDInterface.h"
-
+/*----------------------------------------------------------------------------
+ * CONSTANTS
+ *---------------------------------------------------------------------------*/
 #define RX_PKT 0x01
 
+/*----------------------------------------------------------------------------
+ * GLOBAL VARIABLES
+ *---------------------------------------------------------------------------*/
 float received[2] = {0, 0} ;
 float read[30];
 float a;
 uint8_t read2[5][5];
 uint8_t plot[2];
 uint8_t status;
-
 uint8_t temp, test; 
 
-
-
-// ID for thread
+/*----------------------------------------------------------------------------
+ * THREAD ID Decleration
+ *---------------------------------------------------------------------------*/
 osThreadId	Rx_thread;
 osThreadId  Tx_thread;
 
+/*----------------------------------------------------------------------------
+ * FUNCTIONS PROTOTYPE
+ *---------------------------------------------------------------------------*/
 void wireless_init(void);
 
-typedef struct packet {
-   uint8_t Src_addr;
-   uint8_t Seq_num;
-   uint8_t Aux_rssi;
-   uint8_t Rssi;
-   uint8_t Crc_id;
-} Packet;
 
-
-	
-void Blinky_GPIO_Init(void){
-	GPIO_InitTypeDef GPIO_InitStructure;
-	
-	RCC_AHB1PeriphClockCmd(RCC_AHB1Periph_GPIOD, ENABLE);
-
-	GPIO_InitStructure.GPIO_Pin = GPIO_Pin_12 | GPIO_Pin_13| GPIO_Pin_14| GPIO_Pin_15;
-  GPIO_InitStructure.GPIO_Mode = GPIO_Mode_OUT;
-  GPIO_InitStructure.GPIO_OType = GPIO_OType_PP;
-  GPIO_InitStructure.GPIO_Speed = GPIO_Speed_100MHz;
-  GPIO_InitStructure.GPIO_PuPd = GPIO_PuPd_NOPULL;
-  GPIO_Init(GPIOD, &GPIO_InitStructure);
-	
-}
-
+/**
+* @brief  Set Grid
+* @param  void
+* @retval Null
+*/
 void setGrid(){
-     LCD_SetFont(&Font8x8);
-	  //The number of string lines avaialble is dependant on the font height:
-	  //A font height of 8 will result in 320 / 8 = 40 lines
-		
-    //LCD_DisplayStringLine(0, 4,  (uint8_t*)&read[0]);
-	  
-	  //The stm32f429i_discovery_lcd.h file offers functions which allows to draw various shapes
-	  //in either border or filled with colour. You can draw circles, rectangles, triangles, lines,
-	  //ellipses, and polygons. You can draw strings or characters, change background/foreground 
-	  //colours.
+    LCD_SetFont(&Font8x8);
 	  LCD_SetTextColor(LCD_COLOR_BLACK);
 		int i, j;
+	  //Draws horizontal lines
     for(i =20; i <= 300; i +=10)
     {		
 	   LCD_DrawLine(20, i, 200, LCD_DIR_HORIZONTAL);
 		}
+		//Draws vertical lines
 		for(j = 20; j <= 220; j +=10)
     {		
 	   LCD_DrawLine(j, 20, 280, LCD_DIR_VERTICAL);
@@ -103,104 +85,80 @@ void setGrid(){
 		LCD_SetTextColor(LCD_COLOR_RED);
 }
 
+
+/**
+* @brief  Display LCD
+* @param  Pre-Set Argument
+* @retval Null
+*/
 void DisplayLCD(void const *argument){
 	char* s;
 	int cnt, i = 0;
 	   LCD_Clear(LCD_COLOR_WHITE);
-	  //sprintf( s , "%d", read[0] ); 
-	  //The files source and header files implement drawing characters (drawing strings)
-	  //using different font sizes, see the file font.h for the four sizes
      setGrid();
 	while(1){
-		/* Clear the LCD */  		
-		//LCD_DrawCircle((uint16_t)(20+read[0]*0.862745), (uint16_t)(20+read[1]*1.176), 4 );
-		if(cnt > 1)
+		if((cnt > 1)&&(received[0] < 255)&&(received[1] < 255))
 		{
-			LCD_DrawUniLine((uint16_t)(120+received[0]*0.862745), (uint16_t)(160+received[1]*1.176), plot[0], plot[1]);
+			LCD_DrawUniLine((uint16_t)(120+received[0]*5), (uint16_t)(160-received[1]*5), plot[0], plot[1]);
 		}
-		plot[0] = (uint16_t)(120+received[0]*0.862745);
-		plot[1] = (uint16_t)(160+received[1]*1.176);
+		plot[0] = (uint16_t)(120+received[0]*5); //0.862745
+		plot[1] = (uint16_t)(160-received[1]*5);  //1.176
 		cnt++;
-
-
-		
-//	  LCD_SetTextColor(LCD_COLOR_BLUE2); 
-//	  LCD_DrawFullCircle(120, 160, 100);
-//	  LCD_SetTextColor(LCD_COLOR_CYAN); 
-//	  LCD_DrawFullCircle(120, 160, 90);
-//	  LCD_SetTextColor(LCD_COLOR_YELLOW); 
-//	  LCD_DrawFullCircle(120, 160, 80);
-//	  LCD_SetTextColor(LCD_COLOR_RED); 
-//	  LCD_DrawFullCircle(120, 160, 70);
-//	  LCD_SetTextColor(LCD_COLOR_BLUE); 
-//	  LCD_DrawFullCircle(120, 160, 60);
-//	  LCD_SetTextColor(LCD_COLOR_GREEN); 
-//	  LCD_DrawFullCircle(120, 160, 50);
-//	  LCD_SetTextColor(LCD_COLOR_BLACK); 
-//	  LCD_DrawFullCircle(120, 160, 40);
-//		LCD_SetTextColor(LCD_COLOR_WHITE);
-//		LCD_DrawRect(90,130,60,60);
-//		LCD_SetTextColor(LCD_COLOR_MAGENTA);
-//		LCD_FillTriangle(90, 120, 150, 130, 180, 130);
-//		LCD_SetFont(&Font12x12);
-//		LCD_DisplayStringLine(LINE(15), (uint8_t*)"      Success!    ");
 		
 		osDelay(200);
 	}
 }
 
+/**
+* @brief  Receive packets
+* @param  Pre-Set Argument
+* @retval Null
+*/
 void RxPacket(void const *argument){
 	uint8_t mode_filter, transmit_mode;
    //uint8_t buf;
 	uint8_t buf[2];
-	Packet pkt;
    GPIO_ResetBits(GPIOD, GPIO_Pin_12 | GPIO_Pin_13 | GPIO_Pin_14 | GPIO_Pin_15);
    mode_filter = 0x70;
    transmit_mode = 0x20;
 	printf("Thread_started. waiting for signal\n");
    // put reciever in RX mode
-	CC2500_Strobe(CC2500_STROBE_SRX, 0x00);
-	
-  //osSignalWait(RX_PKT, osWaitForever); 
+	CC2500_Strobe(CC2500_STROBE_SRX, 0x00); 
 	while(1){
 		int i = 0;
-		
 		status = CC2500_Strobe(CC2500_STROBE_SRX, 0x00);
 		CC2500_Read(&temp, CC2500_STATUS_REG_RXBYTES , 2);
 		CC2500_Read(&test, CC2500_STATUS_REG_PKTSTATUS , 2);
-		//CC2500_RxPackets(read, 2);
+		//Read only if correct packet length
 		if(temp == CC2500_SETTING_PKTLEN)
 		{
 	  	status = CC2500_Strobe(CC2500_STROBE_SRX, 0x00);
-		  CC2500_RxPackets((uint8_t*)received, CC2500_SETTING_PKTLEN );
+		  CC2500_RxPackets((uint8_t*)received, CC2500_SETTING_PKTLEN ); //Store in float array
 		}
 		osDelay(100);
-		//printf("Read is %d %d \n", read[0], read[1]);
 	}
 }
 
+/*----------------------------------------------------------------------------
+ * THREAD DEFINITIONS
+ *---------------------------------------------------------------------------*/
 osThreadDef(RxPacket, osPriorityNormal, 1, 0);
 osThreadDef(DisplayLCD, osPriorityNormal, 1, 0);
-
 osThreadId DisplayLCD_thread;
-/*
- * main: initialize and start the system
- */
+
+/**
+* @brief  Main Function
+* @param  
+* @retval int 0
+*/
 int main (void) {
 
   osKernelInitialize ();                    // initialize CMSIS-RTOS
-  wireless_init();
-	
-	  // initialize peripherals here
-	/* LCD initiatization */
-  LCD_Init();
-  
-  /* LCD Layer initiatization */
-  LCD_LayerInit();
-    
+  wireless_init();  //Initialize wireless
+  LCD_Init();  //Initialize LCD
+  LCD_LayerInit(); //Initialize Layer  
   /* Enable the LTDC controler */
   LTDC_Cmd(ENABLE);
-  
   /* Set LCD foreground layer as the current layer */
   LCD_SetLayer(LCD_FOREGROUND_LAYER);
 	DisplayLCD_thread = osThreadCreate(osThread(DisplayLCD), NULL);
@@ -208,6 +166,11 @@ int main (void) {
 	osKernelStart();
 }
 
+/**
+* @brief  Initialize wireless 
+* @param  
+* @retval int 0
+*/
 void wireless_init() {
 	
 	
@@ -247,8 +210,10 @@ void wireless_init() {
 }
 
 /**
-  * @brief  Interrupt Service Routine for EXTI12_IRQHandler
-  */
+* @brief  EXTI4 Interrupt Handler
+* @param  No input
+* @retval No return
+*/
 void EXTI4_IRQHandler(void) {
 	//When the interrupt is raised, send a signal to the wireless thread
 	if(EXTI_GetITStatus(CC2500_SPI_INT_EXTI_LINE) != RESET){

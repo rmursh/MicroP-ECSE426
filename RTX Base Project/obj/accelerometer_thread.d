@@ -1,18 +1,17 @@
 .\obj\accelerometer_thread.o: src\accelerometer_thread.c
 .\obj\accelerometer_thread.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
 .\obj\accelerometer_thread.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
-.\obj\accelerometer_thread.o: C:\Keil_v5\ARM\PACK\ARM\CMSIS\4.4.0\CMSIS\RTOS\RTX\INC\cmsis_os.h
+.\obj\accelerometer_thread.o: C:\Keil_v5\ARM\PACK\ARM\CMSIS\4.3.0\CMSIS\RTOS\RTX\INC\cmsis_os.h
 .\obj\accelerometer_thread.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
 .\obj\accelerometer_thread.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stddef.h
 .\obj\accelerometer_thread.o: C:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\1.0.8\Device\Include\stm32f4xx.h
-.\obj\accelerometer_thread.o: C:\Keil_v5\ARM\PACK\ARM\CMSIS\4.4.0\CMSIS\Include\core_cm4.h
-.\obj\accelerometer_thread.o: C:\Keil_v5\ARM\PACK\ARM\CMSIS\4.4.0\CMSIS\Include\core_cmInstr.h
-.\obj\accelerometer_thread.o: C:\Keil_v5\ARM\PACK\ARM\CMSIS\4.4.0\CMSIS\Include\cmsis_armcc.h
-.\obj\accelerometer_thread.o: C:\Keil_v5\ARM\PACK\ARM\CMSIS\4.4.0\CMSIS\Include\core_cmFunc.h
-.\obj\accelerometer_thread.o: C:\Keil_v5\ARM\PACK\ARM\CMSIS\4.4.0\CMSIS\Include\core_cmSimd.h
+.\obj\accelerometer_thread.o: C:\Keil_v5\ARM\PACK\ARM\CMSIS\4.3.0\CMSIS\Include\core_cm4.h
+.\obj\accelerometer_thread.o: C:\Keil_v5\ARM\PACK\ARM\CMSIS\4.3.0\CMSIS\Include\core_cmInstr.h
+.\obj\accelerometer_thread.o: C:\Keil_v5\ARM\PACK\ARM\CMSIS\4.3.0\CMSIS\Include\core_cmFunc.h
+.\obj\accelerometer_thread.o: C:\Keil_v5\ARM\PACK\ARM\CMSIS\4.3.0\CMSIS\Include\core_cmSimd.h
 .\obj\accelerometer_thread.o: C:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\1.0.8\Device\Include\system_stm32f4xx.h
-.\obj\accelerometer_thread.o: C:\Users\rmursh\Downloads\MicroP-ECSE426\RTX Base Project\RTE\Device\STM32F407VG\stm32f4xx_conf.h
-.\obj\accelerometer_thread.o: C:\Users\rmursh\Downloads\MicroP-ECSE426\RTX Base Project\RTE\RTE_Components.h
+.\obj\accelerometer_thread.o: C:\Users\dalman\Downloads\MicroP-ECSE426\RTX Base Project\RTE\Device\STM32F407VG\stm32f4xx_conf.h
+.\obj\accelerometer_thread.o: C:\Users\dalman\Downloads\MicroP-ECSE426\RTX Base Project\RTE\RTE_Components.h
 .\obj\accelerometer_thread.o: C:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\1.0.8\Device\StdPeriph_Driver\inc\stm32f4xx_adc.h
 .\obj\accelerometer_thread.o: C:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\1.0.8\Device\Include\stm32f4xx.h
 .\obj\accelerometer_thread.o: C:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\1.0.8\Device\StdPeriph_Driver\inc\stm32f4xx_crc.h
